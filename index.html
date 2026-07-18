@@ -1,1 +1,1643 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TutorConnect - Find Your Perfect Tutor | Commission-Based Tutoring Marketplace</title>
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #ccfbf1;
+            --primary-lighter: #f0fdfa;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-lighter: #94a3b8;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-xs: 6px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .nav-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), #14b8a6);
+            border-radius: var(--radius-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-cta {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.65rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-decoration: none;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary-lighter);
+            border-color: var(--primary-dark);
+            color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-lg {
+            padding: 0.85rem 2rem;
+            font-size: 1rem;
+        }
+        .btn-accent {
+            background: var(--accent);
+            color: #7c2d12;
+            box-shadow: var(--shadow);
+        }
+        .btn-accent:hover {
+            background: #d97706;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text);
+            padding: 0.3rem;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(170deg, #f0fdfa 0%, #e6fffa 30%, #f8fafc 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -180px;
+            left: -120px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: #92400e;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            color: #0c4a6e;
+        }
+        .hero h1 span {
+            color: var(--primary);
+            position: relative;
+        }
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--primary-light);
+            border-radius: 4px;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+        .search-box {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 0.6rem;
+            border-radius: 60px;
+            box-shadow: var(--shadow-lg);
+            flex-wrap: wrap;
+        }
+        .search-box input {
+            flex: 1;
+            min-width: 180px;
+            padding: 0.85rem 1.3rem;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            background: #f8fafc;
+            transition: var(--transition);
+            font-family: var(--font);
+        }
+        .search-box input:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.08);
+        }
+        .search-box .btn {
+            border-radius: 50px;
+            padding: 0.85rem 2rem;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat .num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -1px;
+        }
+        .hero-stat .label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* ============ SECTION STYLES ============ */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.75rem;
+            color: #0c4a6e;
+        }
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* ============ SUBJECT GRID ============ */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+        .subject-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text);
+        }
+        .subject-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            background: var(--primary-lighter);
+        }
+        .subject-card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .subject-card .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .subject-card .count {
+            font-size: 0.8rem;
+            color: var(--text-lighter);
+            margin-top: 0.2rem;
+        }
+
+        /* ============ TUTOR CARDS ============ */
+        .tutors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .tutor-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+        .tutor-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+        .tutor-card-header {
+            background: linear-gradient(135deg, #f0fdfa, #e6fffa);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .tutor-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .tutor-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .tutor-info h3 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.15rem;
+        }
+        .tutor-info .rating {
+            color: #f59e0b;
+            font-size: 0.9rem;
+        }
+        .tutor-info .location {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .tutor-card-body {
+            padding: 1.2rem 1.5rem;
+        }
+        .tutor-subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+        .tag {
+            background: #f1f5f9;
+            padding: 0.3rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .tutor-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+        }
+        .tutor-price span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        .tutor-card-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 0.6rem;
+        }
+        .tutor-card-footer .btn {
+            flex: 1;
+            text-align: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            padding: 0.55rem 1rem;
+        }
+        .badge-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: #dcfce7;
+            color: #166534;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.4rem;
+        }
+
+        /* ============ COMMISSION BANNER ============ */
+        .commission-banner {
+            background: linear-gradient(135deg, #0c4a6e, #0f766e);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .commission-banner h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .commission-banner p {
+            opacity: 0.9;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+        .commission-boxes {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .commission-box {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(4px);
+            min-width: 160px;
+        }
+        .commission-box .big {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .commission-box .desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        /* ============ HOW IT WORKS ============ */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .step-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+        }
+        .step-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin: 0 auto 1rem;
+        }
+        .step-card h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .step-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ============ FORM MODAL STYLES ============ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            max-width: 550px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover {
+            background: #e2e8f0;
+        }
+        .modal h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.3px;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-xs);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: var(--transition);
+            background: #f8fafc;
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.06);
+            background: white;
+        }
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        .testimonial-card .stars {
+            color: #f59e0b;
+            margin-bottom: 0.8rem;
+        }
+        .testimonial-card .quote {
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .testimonial-card .author {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .testimonial-card .author-role {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ============ FAQ ============ */
+        .faq-list {
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item summary {
+            padding: 1.2rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        .faq-item .faq-answer {
+            padding: 0 1.5rem 1.2rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ============ CTA SECTION ============ */
+        .cta-section {
+            background: linear-gradient(135deg, #f0fdfa, #e6fffa, #f8fafc);
+            border-radius: var(--radius);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.75rem;
+        }
+        .cta-section p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: #0c4a6e;
+            color: #cbd5e1;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-col h4 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        .footer-col a {
+            display: block;
+            color: #94a3b8;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        .commission-footer-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* ============ TOAST ============ */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .toast {
+            background: #0c4a6e;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-lg);
+            animation: slideIn 0.4s ease, fadeOut 0.4s ease 2.5s forwards;
+            max-width: 400px;
+        }
+        .toast.success {
+            background: #059669;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-cta .btn-outline {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero {
+                padding: 3rem 1rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .search-box {
+                flex-direction: column;
+                border-radius: var(--radius);
+                padding: 0.5rem;
+                gap: 0.5rem;
+            }
+            .search-box input {
+                border-radius: var(--radius-xs);
+            }
+            .search-box .btn {
+                border-radius: var(--radius-xs);
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-stats {
+                gap: 1.5rem;
+            }
+            .section {
+                padding: 3rem 1rem;
+            }
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            .subjects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 0.6rem;
+            }
+            .tutors-grid {
+                grid-template-columns: 1fr;
+            }
+            .commission-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+            .form-row {
+                flex-direction: column;
+            }
+            .modal {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .nav-cta .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .btn-lg {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Mobile nav overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-nav-panel {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 1600;
+            padding: 2rem;
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: var(--shadow-xl);
+        }
+        .mobile-nav-panel.active {
+            right: 0;
+        }
+        .mobile-nav-panel a {
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .mobile-nav-close {
+            align-self: flex-end;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">
+            <span class="logo-icon">📚</span> TutorConnect
+        </a>
+        <ul class="nav-links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#tutors">Find Tutors</a></li>
+            <li><a href="#subjects">Subjects</a></li>
+            <li><a href="#commission">Commission</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-cta">
+            <button class="btn btn-outline" onclick="openModal('tutor-ad-modal')">📝 Post an Ad</button>
+            <button class="btn btn-primary" onclick="openModal('student-inquiry-modal')">🔍 Find a Tutor</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+        <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+        <a href="#how-it-works" onclick="closeMobileNav()">How It Works</a>
+        <a href="#tutors" onclick="closeMobileNav()">Find Tutors</a>
+        <a href="#subjects" onclick="closeMobileNav()">Subjects</a>
+        <a href="#commission" onclick="closeMobileNav()">Commission</a>
+        <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+        <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:1rem;" onclick="closeMobileNav();openModal('tutor-ad-modal')">📝 Post an Ad</button>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="closeMobileNav();openModal('student-inquiry-modal')">🔍 Find a Tutor</button>
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🏆 Trusted by 15,000+ Students & Tutors</div>
+            <h1>Find Your <span>Perfect Tutor</span> or<br>Grow Your Tutoring Business</h1>
+            <p>We connect students with expert tutors across all subjects. Tutors post free ads — we only earn when you do. Simple, transparent, commission-based.</p>
+            <div class="search-box">
+                <input type="text" placeholder="📖 Subject (e.g. Math, Piano, Spanish...)" id="heroSubjectSearch">
+                <input type="text" placeholder="📍 City or Online" id="heroLocationSearch">
+                <button class="btn btn-accent btn-lg" onclick="searchTutors()">🔍 Search Tutors</button>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><div class="num">4,800+</div><div class="label">Active Tutors</div></div>
+                <div class="hero-stat"><div class="num">12,000+</div><div class="label">Happy Students</div></div>
+                <div class="hero-stat"><div class="num">98%</div><div class="label">Satisfaction Rate</div></div>
+                <div class="hero-stat"><div class="num">15%</div><div class="label">Avg. Commission</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="section" id="how-it-works">
+        <div class="section-header">
+            <h2>How TutorConnect Works</h2>
+            <p>A seamless marketplace connecting tutors and students — we handle the match, you focus on learning and teaching.</p>
+        </div>
+        <div class="steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h4>Tutors Post Free Ads</h4>
+                <p>Tutors create detailed profiles showcasing their skills, subjects, rates, and availability. Posting is completely free.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h4>Students Search & Compare</h4>
+                <p>Students browse verified tutor profiles, compare prices, read reviews, and find the perfect match for their needs.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h4>Book & Pay Securely</h4>
+                <p>Lessons are booked through our platform with secure payment. We hold funds until the lesson is confirmed.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h4>We Take a Small Commission</h4>
+                <p>Only when a lesson happens, we deduct a transparent 15% commission. Tutors keep 85% — no hidden fees.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SUBJECTS ==================== -->
+    <section class="section" id="subjects">
+        <div class="section-header">
+            <h2>Popular Subjects</h2>
+            <p>Browse thousands of tutors across every subject imaginable.</p>
+        </div>
+        <div class="subjects-grid" id="subjectsGrid">
+            <!-- Filled by JS -->
+        </div>
+    </section>
+
+    <!-- ==================== FEATURED TUTORS ==================== -->
+    <section class="section" id="tutors">
+        <div class="section-header">
+            <h2>Featured Tutor Ads</h2>
+            <p>Top-rated tutors actively looking for new students. All profiles are verified.</p>
+        </div>
+        <div class="tutors-grid" id="tutorsGrid">
+            <!-- Filled by JS -->
+        </div>
+        <div style="text-align:center;margin-top:2rem;">
+            <button class="btn btn-outline btn-lg" onclick="loadMoreTutors()">📋 Browse All Tutor Ads →</button>
+        </div>
+    </section>
+
+    <!-- ==================== COMMISSION BANNER ==================== -->
+    <section class="section" id="commission">
+        <div class="commission-banner">
+            <h3>💰 Transparent Commission Model</h3>
+            <p>We believe in fairness. Tutors post ads for <strong>free</strong>. We only earn a commission when a paid lesson is completed through our platform.</p>
+            <div class="commission-boxes">
+                <div class="commission-box">
+                    <div class="big">0€</div>
+                    <div class="desc">to post an ad</div>
+                </div>
+                <div class="commission-box">
+                    <div class="big">15%</div>
+                    <div class="desc">commission per lesson</div>
+                </div>
+                <div class="commission-box">
+                    <div class="big">85%</div>
+                    <div class="desc">tutor keeps</div>
+                </div>
+                <div class="commission-box">
+                    <div class="big">100%</div>
+                    <div class="desc">first lesson free*</div>
+                </div>
+            </div>
+            <p style="margin-top:1rem;font-size:0.85rem;opacity:0.7;">* First lesson commission-free for new tutors as a welcome bonus.</p>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section">
+        <div class="section-header">
+            <h2>What Our Users Say</h2>
+            <p>Real stories from tutors and students using TutorConnect.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="quote">"I found an amazing math tutor within 2 days. The commission model is fair and transparent. My grades improved dramatically!"</p>
+                <p class="author">Sarah M.</p>
+                <p class="author-role">Student, Berlin</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="quote">"As a tutor, I love that posting ads is free. I only pay when I actually earn. I've gained 20+ regular students through this platform."</p>
+                <p class="author">David K.</p>
+                <p class="author-role">Math & Physics Tutor</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="quote">"The platform is easy to use, and the commission is reasonable compared to other sites. Highly recommend for both tutors and students!"</p>
+                <p class="author">Emma L.</p>
+                <p class="author-role">Piano Teacher</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section" id="faq">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about our tutoring marketplace.</p>
+        </div>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>How does the commission model work?</summary>
+                <div class="faq-answer">Tutors post ads completely free. When a student books and pays for a lesson through our platform, we deduct a 15% commission. The remaining 85% is paid to the tutor. There are no monthly fees, listing fees, or hidden charges.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Is posting a tutor ad really free?</summary>
+                <div class="faq-answer">Yes! Creating a tutor profile and posting ads is 100% free. You only pay commission when you successfully complete a paid lesson through our platform.</div>
+            </details>
+            <details class="faq-item">
+                <summary>How do I get paid as a tutor?</summary>
+                <div class="faq-answer">Payments are processed securely through our platform. After a lesson is confirmed, funds (minus the 15% commission) are transferred to your connected bank account or PayPal within 3-5 business days.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Are tutors verified?</summary>
+                <div class="faq-answer">Yes. All tutors go through a verification process including ID checks, qualification verification, and background screening. Verified tutors display a green badge on their profile.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Can I take a trial lesson?</summary>
+                <div class="faq-answer">Many tutors offer a free introductory session or a discounted first lesson. Additionally, new tutors get their first lesson commission-free as a welcome bonus from us.</div>
+            </details>
+            <details class="faq-item">
+                <summary>What subjects are covered?</summary>
+                <div class="faq-answer">We cover virtually every subject: Mathematics, Languages, Sciences, Music, Test Preparation, Programming, Art, and more. If you don't find your subject, you can request it and we'll help match you.</div>
+            </details>
+        </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="section">
+        <div class="cta-section">
+            <h2>Ready to Start Your Tutoring Journey?</h2>
+            <p>Join 15,000+ users already learning and earning on TutorConnect. Post an ad or find your perfect tutor today.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary btn-lg" onclick="openModal('tutor-ad-modal')">📝 I'm a Tutor — Post a Free Ad</button>
+                <button class="btn btn-accent btn-lg" onclick="openModal('student-inquiry-modal')">🎓 I'm a Student — Find a Tutor</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>📚 TutorConnect</h4>
+                <p style="font-size:0.9rem;margin-bottom:0.5rem;">The commission-based tutoring marketplace.</p>
+                <span class="commission-footer-badge">15% Commission • Free Ads</span>
+            </div>
+            <div class="footer-col">
+                <h4>For Students</h4>
+                <a href="#tutors">Find a Tutor</a>
+                <a href="#subjects">Browse Subjects</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>For Tutors</h4>
+                <a href="#" onclick="openModal('tutor-ad-modal')">Post an Ad</a>
+                <a href="#commission">Commission Info</a>
+                <a href="#">Tutor Guidelines</a>
+                <a href="#">Success Stories</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TutorConnect. All rights reserved. | Commission-Based Tutoring Marketplace</p>
+        </div>
+    </footer>
+
+    <!-- ==================== MODAL: Tutor Ad Form ==================== -->
+    <div class="modal-overlay" id="tutor-ad-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('tutor-ad-modal')">✕</button>
+            <h3>📝 Post Your Tutor Ad — It's Free!</h3>
+            <p style="color:var(--text-light);margin-bottom:1.5rem;font-size:0.9rem;">Create your profile and start attracting students. No upfront costs — we only earn when you do.</p>
+            <form id="tutorAdForm" onsubmit="submitTutorAd(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" placeholder="Your name" required id="tutorName">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" placeholder="your@email.com" required id="tutorEmail">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Subject *</label>
+                        <select required id="tutorSubject">
+                            <option value="">Select subject...</option>
+                            <option>Mathematics</option>
+                            <option>English</option>
+                            <option>German</option>
+                            <option>French</option>
+                            <option>Spanish</option>
+                            <option>Physics</option>
+                            <option>Chemistry</option>
+                            <option>Biology</option>
+                            <option>Computer Science</option>
+                            <option>Piano</option>
+                            <option>Guitar</option>
+                            <option>Violin</option>
+                            <option>Test Prep (SAT/ACT)</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hourly Rate (€) *</label>
+                        <input type="number" placeholder="e.g. 35" min="5" max="300" required id="tutorRate">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="e.g. Berlin or Online" id="tutorCity">
+                    </div>
+                    <div class="form-group">
+                        <label>Experience (years)</label>
+                        <input type="number" placeholder="e.g. 5" min="0" max="50" id="tutorExperience">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Short Description *</label>
+                    <textarea rows="3" placeholder="Describe your teaching style, qualifications, and what students can expect..." required id="tutorDescription"></textarea>
+                </div>
+                <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;">
+                    💡 <strong>Commission reminder:</strong> You keep 85% of every lesson. We deduct 15% only when you get paid. Posting this ad is free.
+                </p>
+                <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">✅ Post Free Ad</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL: Student Inquiry Form ==================== -->
+    <div class="modal-overlay" id="student-inquiry-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('student-inquiry-modal')">✕</button>
+            <h3>🎓 Find Your Perfect Tutor</h3>
+            <p style="color:var(--text-light);margin-bottom:1.5rem;font-size:0.9rem;">Tell us what you need and we'll match you with the best tutors.</p>
+            <form id="studentInquiryForm" onsubmit="submitStudentInquiry(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" placeholder="Your name" required id="studentName">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" placeholder="your@email.com" required id="studentEmail">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Subject Needed *</label>
+                    <select required id="studentSubject">
+                        <option value="">Select subject...</option>
+                        <option>Mathematics</option>
+                        <option>English</option>
+                        <option>German</option>
+                        <option>French</option>
+                        <option>Spanish</option>
+                        <option>Physics</option>
+                        <option>Chemistry</option>
+                        <option>Biology</option>
+                        <option>Computer Science</option>
+                        <option>Piano</option>
+                        <option>Guitar</option>
+                        <option>Violin</option>
+                        <option>Test Prep (SAT/ACT)</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Budget per Hour (€)</label>
+                        <input type="number" placeholder="e.g. 30" min="5" id="studentBudget">
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" placeholder="City or Online" id="studentLocation">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea rows="3" placeholder="Any specific requirements, preferred schedule, level..." id="studentNotes"></textarea>
+                </div>
+                <button type="submit" class="btn btn-accent btn-lg" style="width:100%;justify-content:center;">🔍 Find Matching Tutors</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // ============ DATA ============
+        const subjectsData = [
+            { icon: '📐', name: 'Mathematics', count: 820 },
+            { icon: '🇬🇧', name: 'English', count: 650 },
+            { icon: '🇩🇪', name: 'German', count: 580 },
+            { icon: '🇫🇷', name: 'French', count: 440 },
+            { icon: '🇪🇸', name: 'Spanish', count: 390 },
+            { icon: '⚛️', name: 'Physics', count: 310 },
+            { icon: '🧪', name: 'Chemistry', count: 280 },
+            { icon: '🧬', name: 'Biology', count: 250 },
+            { icon: '💻', name: 'Programming', count: 420 },
+            { icon: '🎹', name: 'Piano', count: 180 },
+            { icon: '🎸', name: 'Guitar', count: 150 },
+            { icon: '🎻', name: 'Violin', count: 95 },
+            { icon: '📝', name: 'Test Prep', count: 340 },
+            { icon: '🎨', name: 'Art & Design', count: 130 },
+            { icon: '🧮', name: 'Accounting', count: 200 },
+            { icon: '🗣️', name: 'Public Speaking', count: 110 },
+        ];
+
+        const tutorsData = [
+            { id: 1, name: 'Dr. Michael Schmidt', initials: 'MS', subject: 'Mathematics', subjects: ['Mathematics',
+                    'Physics', 'Statistics'
+                ], rating: 4.9, reviews: 127, location: 'Berlin', price: 45, experience: 12, verified: true,
+                description: 'Experienced university lecturer with a passion for making complex concepts simple.',
+                online: true },
+            { id: 2, name: 'Sarah Johnson', initials: 'SJ', subject: 'English', subjects: ['English', 'ESL',
+                    'Business English'
+                ], rating: 4.8, reviews: 93, location: 'Online', price: 35, experience: 8, verified: true,
+                description: 'Native English speaker with TEFL certification. Specializing in conversational English.',
+                online: true },
+            { id: 3, name: 'Marie Dupont', initials: 'MD', subject: 'French', subjects: ['French', 'Literature'],
+                rating: 4.9, reviews: 156, location: 'Munich', price: 40, experience: 10, verified: true,
+                description: 'Native French teacher from Paris. All levels welcome — from beginner to advanced.',
+                online: false },
+            { id: 4, name: 'Carlos Rodriguez', initials: 'CR', subject: 'Spanish', subjects: ['Spanish',
+                    'Latin American Culture'
+                ], rating: 4.7, reviews: 88, location: 'Online', price: 30, experience: 6, verified: true,
+                description: 'Fun and interactive Spanish lessons. Learn through conversation and real-life scenarios.',
+                online: true },
+            { id: 5, name: 'Anna Bauer', initials: 'AB', subject: 'Piano', subjects: ['Piano', 'Music Theory'],
+                rating: 5.0, reviews: 64, location: 'Hamburg', price: 55, experience: 15, verified: true,
+                description: 'Concert pianist with 15 years of teaching experience. Classical and modern styles.',
+                online: false },
+            { id: 6, name: 'James Wilson', initials: 'JW', subject: 'Programming', subjects: ['Python', 'JavaScript',
+                    'Web Development'
+                ], rating: 4.8, reviews: 210, location: 'Online', price: 50, experience: 9, verified: true,
+                description: 'Full-stack developer helping students break into tech. Project-based learning approach.',
+                online: true },
+        ];
+
+        // ============ RENDER SUBJECTS ============
+        function renderSubjects() {
+            const grid = document.getElementById('subjectsGrid');
+            grid.innerHTML = subjectsData.map(s => `
+            <a href="#tutors" class="subject-card" onclick="filterBySubject('${s.name}')" title="${s.count} tutors available">
+              <div class="icon">${s.icon}</div>
+              <div class="name">${s.name}</div>
+              <div class="count">${s.count} tutors</div>
+            </a>
+          `).join('');
+        }
+
+        // ============ RENDER TUTORS ============
+        function renderTutors(tutors = tutorsData) {
+            const grid = document.getElementById('tutorsGrid');
+            grid.innerHTML = tutors.map(t => `
+            <div class="tutor-card">
+              <div class="tutor-card-header">
+                <div class="tutor-avatar">${t.initials}</div>
+                <div class="tutor-info">
+                  <h3>${t.name} ${t.verified ? '<span class="badge-verified">✓ Verified</span>' : ''}</h3>
+                  <div class="rating">⭐ ${t.rating} (${t.reviews} reviews)</div>
+                  <div class="location">📍 ${t.location} ${t.online ? '• 💻 Online' : ''}</div>
+                </div>
+              </div>
+              <div class="tutor-card-body">
+                <div class="tutor-subjects">
+                  ${t.subjects.map(s => `<span class="tag">${s}</span>`).join('')}
+                </div>
+                <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:0.8rem;">${t.description}</p>
+                <div class="tutor-price">€${t.price} <span>/ hour</span></div>
+                <p style="font-size:0.75rem;color:var(--text-lighter);">💰 Tutor keeps €${Math.round(t.price * 0.85)} (85%) • Commission €${Math.round(t.price * 0.15)} (15%)</p>
+              </div>
+              <div class="tutor-card-footer">
+                <button class="btn btn-outline" onclick="contactTutor('${t.name}')">💬 Message</button>
+                <button class="btn btn-primary" onclick="bookLesson('${t.name}', ${t.price})">📅 Book Lesson</button>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        function filterBySubject(subject) {
+            const filtered = tutorsData.filter(t =>
+                t.subjects.some(s => s.toLowerCase().includes(subject.toLowerCase())) ||
+                t.subject.toLowerCase().includes(subject.toLowerCase())
+            );
+            renderTutors(filtered.length > 0 ? filtered : tutorsData);
+            document.getElementById('tutors').scrollIntoView({ behavior: 'smooth' });
+            if (filtered.length > 0) {
+                showToast(`Showing ${filtered.length} tutors for "${subject}"`, 'success');
+            } else {
+                showToast(`No exact match for "${subject}" — showing all tutors`, '');
+            }
+        }
+
+        function loadMoreTutors() {
+            document.getElementById('tutors').scrollIntoView({ behavior: 'smooth' });
+            renderTutors(tutorsData);
+            showToast('Showing all available tutor ads', 'success');
+        }
+
+        // ============ SEARCH ============
+        function searchTutors() {
+            const subjectQuery = document.getElementById('heroSubjectSearch').value.trim().toLowerCase();
+            const locationQuery = document.getElementById('heroLocationSearch').value.trim().toLowerCase();
+            let filtered = tutorsData;
+            if (subjectQuery) {
+                filtered = filtered.filter(t =>
+                    t.subjects.some(s => s.toLowerCase().includes(subjectQuery)) ||
+                    t.subject.toLowerCase().includes(subjectQuery) ||
+                    t.description.toLowerCase().includes(subjectQuery)
+                );
+            }
+            if (locationQuery) {
+                filtered = filtered.filter(t =>
+                    t.location.toLowerCase().includes(locationQuery) ||
+                    (locationQuery === 'online' && t.online)
+                );
+            }
+            renderTutors(filtered.length > 0 ? filtered : tutorsData);
+            document.getElementById('tutors').scrollIntoView({ behavior: 'smooth' });
+            if (filtered.length === 0 && (subjectQuery || locationQuery)) {
+                showToast('No exact matches found — showing all tutors', '');
+            } else if (filtered.length > 0 && (subjectQuery || locationQuery)) {
+                showToast(`Found ${filtered.length} matching tutor(s)!`, 'success');
+            }
+        }
+
+        // Allow Enter key in search inputs
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSubject = document.getElementById('heroSubjectSearch');
+            const heroLocation = document.getElementById('heroLocationSearch');
+            if (heroSubject) heroSubject.addEventListener('keydown', e => { if (e.key === 'Enter') searchTutors(); });
+            if (heroLocation) heroLocation.addEventListener('keydown', e => { if (e.key === 'Enter') searchTutors(); });
+        });
+
+        // ============ MODALS ============
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modals on overlay click
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close modals on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(m => {
+                    m.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ============ FORM SUBMISSIONS ============
+        function submitTutorAd(event) {
+            event.preventDefault();
+            const name = document.getElementById('tutorName').value;
+            const subject = document.getElementById('tutorSubject').value;
+            const rate = document.getElementById('tutorRate').value;
+            closeModal('tutor-ad-modal');
+            showToast(`✅ Ad posted! Welcome, ${name}! Your ${subject} ad is now live. You'll keep €${Math.round(rate * 0.85)}/hr after our 15% commission.`,
+                'success');
+            document.getElementById('tutorAdForm').reset();
+        }
+
+        function submitStudentInquiry(event) {
+            event.preventDefault();
+            const name = document.getElementById('studentName').value;
+            const subject = document.getElementById('studentSubject').value;
+            closeModal('student-inquiry-modal');
+            showToast(`🎓 Request sent, ${name}! We'll match you with the best ${subject} tutors shortly.`, 'success');
+            document.getElementById('studentInquiryForm').reset();
+            // Auto-filter tutors
+            setTimeout(() => filterBySubject(subject), 800);
+        }
+
+        function contactTutor(name) {
+            showToast(`💬 Opening chat with ${name}...`, 'success');
+        }
+
+        function bookLesson(name, price) {
+            const tutorKeep = Math.round(price * 0.85);
+            const commission = Math.round(price * 0.15);
+            showToast(
+                `📅 Booking lesson with ${name} at €${price}/hr — Tutor receives €${tutorKeep}, Commission €${commission} (15%)`,
+                'success');
+        }
+
+        // ============ TOAST ============
+        function showToast(message, type = '') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => {
+                if (toast.parentNode) toast.remove();
+            }, 3000);
+        }
+
+        // ============ MOBILE NAVIGATION ============
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavPanel = document.getElementById('mobileNavPanel');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        function openMobileNav() {
+            mobileNavPanel.classList.add('active');
+            mobileNavOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            mobileNavPanel.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileNav);
+        if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
+        if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+        // ============ NAVBAR SCROLL EFFECT ============
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============ INIT ============
+        function init() {
+            renderSubjects();
+            renderTutors();
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
