@@ -6,20 +6,22 @@
     <title>HopeUp Tech Tutoring | Physics • Maths • Amharic | Canada</title>
     <style>
         :root {
-            --bg-primary: #050508;
-            --bg-card: #0d0d1a;
-            --bg-card-hover: #141428;
-            --accent: #00ff89;
-            --accent-glow: rgba(0, 255, 137, 0.35);
-            --accent2: #7b61ff;
-            --accent2-glow: rgba(123, 97, 255, 0.35);
-            --text-primary: #f5f5ff;
-            --text-secondary: #b0b0c8;
-            --border: #222240;
-            --gradient-1: linear-gradient(135deg, #00ff89, #00cc6a);
-            --gradient-2: linear-gradient(135deg, #7b61ff, #b56eff);
-            --radius-lg: 24px;
-            --transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            --primary: #1E73BE;
+            --primary-dark: #155a8f;
+            --accent: #F47920;
+            --accent-dark: #d15d0a;
+            --bg-light: #f4f6fa;
+            --bg-white: #ffffff;
+            --text-dark: #2d2d3a;
+            --text-body: #4a4a5a;
+            --text-muted: #6f6f80;
+            --border: #e0e0e8;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --transition: 0.3s ease;
         }
 
         * {
@@ -29,24 +31,11 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.5;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-body);
+            line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Particles Canvas */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.5;
         }
 
         /* Navigation */
@@ -55,15 +44,16 @@
             top: 0;
             left: 0;
             right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             z-index: 1000;
-            background: rgba(5, 5, 8, 0.8);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition);
         }
         .nav-inner {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 16px 32px;
+            padding: 16px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -71,151 +61,130 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 800;
-            font-size: 1.4rem;
-            color: #fff;
-            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
             text-decoration: none;
+            cursor: pointer;
         }
-        .logo-glow {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--gradient-1);
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--primary);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: #000;
-            box-shadow: 0 0 25px rgba(0, 255, 137, 0.6);
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 900;
         }
         .nav-links {
             display: flex;
-            gap: 4px;
+            gap: 8px;
             list-style: none;
         }
         .nav-links a {
             text-decoration: none;
-            color: var(--text-secondary);
-            padding: 10px 20px;
+            color: var(--text-body);
+            padding: 10px 18px;
             border-radius: 30px;
-            font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.25s;
+            font-size: 0.95rem;
+            transition: var(--transition);
             cursor: pointer;
+            white-space: nowrap;
         }
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
+            background: #e8f0fe;
+            color: var(--primary);
+        }
+        .nav-links a.nav-cta {
+            background: var(--accent);
             color: #fff;
-            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(244, 121, 32, 0.35);
         }
-        .nav-cta {
-            background: var(--gradient-1) !important;
-            color: #000 !important;
-            font-weight: 700 !important;
-            box-shadow: 0 6px 22px rgba(0, 255, 137, 0.4);
+        .nav-links a.nav-cta:hover {
+            background: var(--accent-dark);
         }
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
-            z-index: 1001;
-        }
-        .mobile-menu-btn span {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: #fff;
-            margin: 6px 0;
-            border-radius: 3px;
+            font-size: 1.6rem;
+            color: var(--text-dark);
         }
 
-        /* Page Container */
-        .page-container {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            padding-top: 90px;
+        /* Sections */
+        section {
+            padding: 90px 24px 70px;
         }
-        .page {
-            display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.4s, transform 0.4s;
-            padding: 50px 32px 40px;
-        }
-        .page.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .page-inner {
-            max-width: 1200px;
+        .section-inner {
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-block;
+            background: #e8f0fe;
+            color: var(--primary);
             padding: 6px 18px;
-            border-radius: 30px;
-            background: rgba(0, 255, 137, 0.08);
-            border: 1px solid rgba(0, 255, 137, 0.2);
-            color: var(--accent);
-            font-size: 0.85rem;
+            border-radius: 20px;
             font-weight: 600;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
         }
         .section-title {
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
         .section-desc {
-            color: var(--text-secondary);
-            font-size: 1.15rem;
-            max-width: 650px;
-            margin-bottom: 50px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 48px;
         }
+
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 34px;
-            border-radius: 40px;
-            font-weight: 700;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
             cursor: pointer;
             border: none;
-            transition: all 0.3s;
-            letter-spacing: -0.3px;
+            transition: var(--transition);
+            letter-spacing: -0.2px;
         }
         .btn-primary {
-            background: var(--gradient-1);
-            color: #000;
-            box-shadow: 0 10px 28px rgba(0, 255, 137, 0.45);
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(244, 121, 32, 0.4);
         }
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 38px rgba(0, 255, 137, 0.7);
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(244, 121, 32, 0.5);
         }
         .btn-outline {
             background: transparent;
-            color: #fff;
-            border: 2px solid var(--border);
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
         .btn-outline:hover {
-            border-color: var(--accent);
-            background: rgba(0, 255, 137, 0.04);
-            transform: translateY(-3px);
+            background: rgba(30, 115, 190, 0.06);
+            transform: translateY(-2px);
         }
 
         /* Hero */
@@ -224,24 +193,20 @@
             align-items: center;
             gap: 40px;
             flex-wrap: wrap;
-            justify-content: center;
-            padding: 40px 0;
+            padding: 120px 0 60px;
         }
         .hero-text {
-            flex: 1 1 500px;
+            flex: 1 1 450px;
         }
-        .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5rem);
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
             font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1.0;
-            margin-bottom: 20px;
+            color: var(--text-dark);
+            line-height: 1.15;
+            margin-bottom: 24px;
         }
-        .hero h1 .highlight {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-text .highlight {
+            color: var(--accent);
         }
         .hero-image {
             flex: 0 0 280px;
@@ -250,129 +215,187 @@
         .hero-image img {
             width: 100%;
             border-radius: 50%;
-            border: 3px solid var(--accent);
-            box-shadow: 0 0 40px var(--accent-glow);
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(30, 115, 190, 0.2);
             object-fit: cover;
             aspect-ratio: 1/1;
         }
         .hero-stats {
             display: flex;
-            gap: 50px;
+            gap: 40px;
             flex-wrap: wrap;
             margin-top: 40px;
         }
         .stat-number {
-            font-size: 2.6rem;
-            font-weight: 900;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         /* Cards */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-        .glow-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+        .card {
+            background: #fff;
+            border-radius: var(--radius-md);
             padding: 36px 28px;
-            transition: all 0.35s;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            text-align: center;
         }
-        .glow-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(0, 255, 137, 0.08), transparent 70%);
-            opacity: 0;
-            transition: 0.4s;
-        }
-        .glow-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 0 35px rgba(0, 255, 137, 0.25);
-        }
-        .glow-card:hover::before {
-            opacity: 1;
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
         }
         .card-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: rgba(0, 255, 137, 0.1);
+            font-size: 2.6rem;
+            margin-bottom: 18px;
+            color: var(--primary);
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        /* How it works steps */
+        .steps {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .step {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: center;
+            flex: 1 1 180px;
+            max-width: 220px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 24px;
-            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin: 0 auto 16px;
         }
 
         /* Pricing */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
+            gap: 30px;
         }
         .pricing-card {
-            background: var(--bg-card);
-            border: 2px solid var(--border);
+            background: #fff;
             border-radius: var(--radius-lg);
-            padding: 40px 28px;
+            padding: 40px 30px;
             text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border);
             position: relative;
-            transition: 0.35s;
+            transition: var(--transition);
         }
         .pricing-card.featured {
             border-color: var(--accent);
-            box-shadow: 0 0 40px rgba(0, 255, 137, 0.3);
+            box-shadow: 0 10px 30px rgba(244, 121, 32, 0.15);
         }
-        .badge {
+        .pricing-badge {
             position: absolute;
             top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--gradient-1);
-            color: #000;
+            background: var(--accent);
+            color: #fff;
             padding: 6px 20px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
         .price {
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 900;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
+            margin: 12px 0;
         }
-        .pricing-card:not(.featured) .price {
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            background-clip: text;
+        .pricing-card.featured .price {
+            color: var(--accent);
+        }
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin: 24px 0;
+        }
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f5;
+            color: var(--text-body);
+        }
+        .pricing-features li::before {
+            content: '✓ ';
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* About */
+        .about-flex {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-img {
+            flex: 0 0 220px;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+        }
+        .badge-exp {
+            display: inline-block;
+            background: #fff0e6;
+            color: var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 10px 0;
         }
 
         /* Testimonials */
-        .carousel {
+        .testimonial-carousel {
             position: relative;
-            min-height: 200px;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .testimonial {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
+        .testimonial-card {
+            background: #fff;
+            border-radius: var(--radius-md);
             padding: 40px;
             text-align: center;
+            box-shadow: var(--shadow-sm);
         }
         .carousel-dots {
             display: flex;
@@ -384,45 +407,57 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--border);
+            background: #ccc;
             cursor: pointer;
         }
         .dot.active {
-            background: var(--accent);
+            background: var(--primary);
         }
 
         /* FAQ */
         .faq-item {
-            border: 1px solid var(--border);
-            border-radius: 16px;
+            background: #fff;
+            border-radius: var(--radius-sm);
             margin-bottom: 12px;
-            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
         }
         .faq-question {
-            padding: 20px 24px;
+            padding: 18px 24px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            color: var(--text-dark);
         }
         .faq-answer {
-            padding: 0 24px 20px;
-            color: var(--text-secondary);
+            padding: 0 24px 18px;
+            color: var(--text-body);
             display: none;
         }
         .faq-item.active .faq-answer {
             display: block;
         }
 
-        /* Footer */
+        /* Contact */
+        .contact-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
-            margin-top: 50px;
-            position: relative;
-            z-index: 1;
+            margin-top: 40px;
+            background: #fff;
         }
 
         @media (max-width: 768px) {
@@ -430,13 +465,13 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 270px;
+                width: 260px;
                 height: 100vh;
-                background: rgba(10, 10, 18, 0.95);
+                background: #fff;
                 flex-direction: column;
-                padding: 90px 20px 20px;
-                backdrop-filter: blur(20px);
-                transition: 0.3s;
+                padding: 100px 20px 20px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: var(--transition);
             }
             .nav-links.active {
                 right: 0;
@@ -446,289 +481,264 @@
             }
             .hero {
                 flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-stats {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <canvas id="particles-canvas"></canvas>
-
-    <!-- Navigation -->
     <nav>
         <div class="nav-inner">
-            <div class="nav-logo" data-page="home">
-                <div class="logo-glow">⚡</div>
+            <div class="nav-logo" onclick="document.getElementById('home').scrollIntoView({behavior:'smooth'})">
+                <div class="logo-icon">⚡</div>
                 HopeUp Tech
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a data-page="home" class="active">Home</a></li>
-                <li><a data-page="subjects">Subjects</a></li>
-                <li><a data-page="pricing">Pricing</a></li>
-                <li><a data-page="how">How It Works</a></li>
-                <li><a data-page="about">About</a></li>
-                <li><a data-page="testimonials">Testimonials</a></li>
-                <li><a data-page="faq">FAQ</a></li>
-                <li><a data-page="contact" class="nav-cta">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#subjects">Subjects</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
     </nav>
 
-    <!-- Pages -->
-    <div class="page-container">
+    <main>
         <!-- Home -->
-        <div class="page active" id="page-home">
-            <div class="page-inner">
+        <section id="home">
+            <div class="section-inner">
                 <div class="hero">
                     <div class="hero-text">
                         <div class="section-badge">🇨🇦 Based in Toronto, Canada</div>
                         <h1>Master <span class="highlight">Physics, Maths</span> & <span class="highlight">Amharic</span></h1>
-                        <p class="section-desc">Expert tutoring for Grade 7‑12 & College. 8+ years experience. Group & private sessions available.</p>
+                        <p class="section-desc">Expert tutoring for Grade 7‑12 & College students. 8+ years of proven experience. Group & private sessions available across Canada.</p>
                         <div class="hero-stats">
-                            <div><div class="stat-number counter" data-target="8">0</div><div class="stat-label">Years Exp.</div></div>
-                            <div><div class="stat-number counter" data-target="500">0</div><div class="stat-label">Students</div></div>
+                            <div><div class="stat-number counter" data-target="8">0</div><div class="stat-label">Years Experience</div></div>
+                            <div><div class="stat-number counter" data-target="500">0</div><div class="stat-label">Students Taught</div></div>
                             <div><div class="stat-number counter" data-target="15">0</div><div class="stat-label">CAD/hr (Group)</div></div>
                             <div><div class="stat-number counter" data-target="20">0</div><div class="stat-label">CAD/hr (Private)</div></div>
                         </div>
                         <div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
-                            <button class="btn btn-primary" data-page="pricing">View Pricing</button>
-                            <button class="btn btn-outline" data-page="contact">Get Started</button>
+                            <a href="#pricing" class="btn btn-primary">View Pricing</a>
+                            <a href="#contact" class="btn btn-outline">Free Consultation</a>
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="https://placehold.co/400x400/0d0d1a/00ff89?text=Tutor+Photo" alt="Tutor" style="width:100%; border-radius:50%;">
+                        <img src="https://placehold.co/400x400/e8f0fe/1E73BE?text=Tutor" alt="Tutor">
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Subjects -->
-        <div class="page" id="page-subjects">
-            <div class="page-inner">
-                <span class="section-badge">Subjects</span>
-                <h2 class="section-title">What We Teach</h2>
+        <section id="subjects" style="background:#fff;">
+            <div class="section-inner">
+                <div class="section-badge">What We Teach</div>
+                <h2 class="section-title">Core Subjects</h2>
                 <div class="cards-grid">
-                    <div class="glow-card">
+                    <div class="card">
                         <div class="card-icon">🔬</div>
                         <h3>Physics</h3>
-                        <p>Mechanics, Electromagnetism, Modern Physics – from fundamentals to exam mastery.</p>
+                        <p>Mechanics, Electromagnetism, Modern Physics – clear explanations and problem‑solving.</p>
                     </div>
-                    <div class="glow-card">
+                    <div class="card">
                         <div class="card-icon">📐</div>
                         <h3>Maths</h3>
-                        <p>Algebra, Calculus, Geometry – step‑by‑step methods for real confidence.</p>
+                        <p>Algebra, Calculus, Geometry – step‑by‑step methods tailored to your learning style.</p>
                     </div>
-                    <div class="glow-card">
+                    <div class="card">
                         <div class="card-icon">📖</div>
                         <h3>Amharic</h3>
-                        <p>Grammar, Literature, Writing – for native speakers and language learners.</p>
+                        <p>Grammar, literature, writing – for native speakers and second‑language learners.</p>
                     </div>
                 </div>
-                <div style="margin-top:30px; display:flex; gap:20px; flex-wrap:wrap;">
-                    <img src="https://placehold.co/150x100/0d0d1a/7b61ff?text=Physics+Icon" alt="Physics" style="border-radius:12px;">
-                    <img src="https://placehold.co/150x100/0d0d1a/7b61ff?text=Maths+Icon" alt="Maths" style="border-radius:12px;">
-                    <img src="https://placehold.co/150x100/0d0d1a/7b61ff?text=Amharic+Icon" alt="Amharic" style="border-radius:12px;">
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how">
+            <div class="section-inner">
+                <div class="section-badge">Process</div>
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps">
+                    <div class="step"><div class="step-number">1</div><h4>Free Consult</h4><p>Share your goals, we assess your level.</p></div>
+                    <div class="step"><div class="step-number">2</div><h4>Personalized Plan</h4><p>Custom roadmap for your success.</p></div>
+                    <div class="step"><div class="step-number">3</div><h4>Interactive Sessions</h4><p>Online or in‑person, group or private.</p></div>
+                    <div class="step"><div class="step-number">4</div><h4>Track Progress</h4><p>Regular feedback & exam prep.</p></div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Pricing -->
-        <div class="page" id="page-pricing">
-            <div class="page-inner" style="text-align:center;">
-                <span class="section-badge">Pricing (CAD)</span>
+        <section id="pricing" style="background:#fff;">
+            <div class="section-inner" style="text-align:center;">
+                <div class="section-badge">Pricing (CAD)</div>
                 <h2 class="section-title">Simple, Transparent Rates</h2>
                 <div class="pricing-grid">
                     <div class="pricing-card">
-                        <div class="badge">👥 Group</div>
+                        <div class="pricing-badge">👥 Group</div>
                         <div class="price">15</div>
-                        <p>CAD / hour per student</p>
-                        <ul style="list-style:none; text-align:left; margin:24px 0;">
-                            <li>✅ 2‑5 students</li>
-                            <li>✅ Same curriculum</li>
-                            <li>✅ Interactive sessions</li>
+                        <div>CAD / hour per student</div>
+                        <ul class="pricing-features">
+                            <li>2‑5 students per group</li>
+                            <li>Same curriculum focus</li>
+                            <li>Interactive discussions</li>
+                            <li>Weekly progress updates</li>
                         </ul>
-                        <button class="btn btn-outline" data-page="contact">Inquire</button>
+                        <a href="#contact" class="btn btn-outline" style="width:100%;">Inquire</a>
                     </div>
                     <div class="pricing-card featured">
-                        <div class="badge">⭐ Private</div>
+                        <div class="pricing-badge">⭐ Private</div>
                         <div class="price">20</div>
-                        <p>CAD / hour</p>
-                        <ul style="list-style:none; text-align:left; margin:24px 0;">
-                            <li>✅ 1‑on‑1 attention</li>
-                            <li>✅ Flexible scheduling</li>
-                            <li>✅ Custom study plan</li>
+                        <div>CAD / hour</div>
+                        <ul class="pricing-features">
+                            <li>1‑on‑1 personalized attention</li>
+                            <li>Flexible schedule</li>
+                            <li>Custom study plan</li>
+                            <li>Exam strategy sessions</li>
                         </ul>
-                        <button class="btn btn-primary" data-page="contact">Book Now</button>
+                        <a href="#contact" class="btn btn-primary" style="width:100%;">Book Now</a>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- How It Works -->
-        <div class="page" id="page-how">
-            <div class="page-inner">
-                <span class="section-badge">Process</span>
-                <h2 class="section-title">How It Works</h2>
-                <div class="cards-grid">
-                    <div class="glow-card"><div class="card-icon">1</div><h4>Free Consult</h4><p>We discuss your goals and level.</p></div>
-                    <div class="glow-card"><div class="card-icon">2</div><h4>Match</h4><p>Custom learning plan created.</p></div>
-                    <div class="glow-card"><div class="card-icon">3</div><h4>Sessions</h4><p>Interactive online/in‑person.</p></div>
-                    <div class="glow-card"><div class="card-icon">4</div><h4>Track</h4><p>Progress reports & adjustments.</p></div>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <!-- About -->
-        <div class="page" id="page-about">
-            <div class="page-inner">
-                <span class="section-badge">About Eyuel</span>
-                <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:center;">
-                    <img src="https://placehold.co/300x300/0d0d1a/00ff89?text=Eyuel" alt="Eyuel" style="border-radius:50%; width:200px; height:200px; object-fit:cover; border:3px solid var(--accent); box-shadow:0 0 30px var(--accent-glow);">
-                    <div style="flex:1;">
-                        <h3>8+ Years of Teaching Excellence</h3>
-                        <p style="color:var(--text-secondary); margin:16px 0;">Based in Toronto, I help students across Canada excel in Physics, Maths, and Amharic. My approach combines deep subject knowledge with patient mentorship.</p>
-                        <span style="background:rgba(0,255,137,0.1); padding:6px 18px; border-radius:20px; color:var(--accent);">📍 Available online Canada‑wide</span>
+        <section id="about">
+            <div class="section-inner">
+                <div class="section-badge">About Eyuel</div>
+                <div class="about-flex">
+                    <div class="about-img">
+                        <img src="https://placehold.co/300x300/fff0e6/F47920?text=Eyuel" alt="Tutor Eyuel">
+                    </div>
+                    <div>
+                        <h2 class="section-title" style="margin-bottom:10px;">Eyuel Mengistu</h2>
+                        <span class="badge-exp">🏆 8+ Years Teaching Experience</span>
+                        <p style="margin-top:16px;">I'm a passionate tutor based in Toronto, dedicated to helping students across Canada excel in Physics, Maths, and Amharic. My approach builds deep understanding and confidence, whether you're preparing for exams or catching up on coursework.</p>
+                        <p style="color:var(--primary); font-weight:500; margin-top:12px;">📍 Available online Canada‑wide</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Testimonials -->
-        <div class="page" id="page-testimonials">
-            <div class="page-inner">
-                <span class="section-badge">Testimonials</span>
-                <h2 class="section-title">What Students Say</h2>
-                <div class="carousel">
-                    <div class="testimonial" id="testimonialText">"Eyuel's physics tutoring helped me get into U of T. Highly recommended!" — Sarah, Grade 12</div>
+        <section id="testimonials" style="background:#fff;">
+            <div class="section-inner">
+                <div class="section-badge">Testimonials</div>
+                <h2 class="section-title" style="text-align:center;">What Students Say</h2>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-card" id="testimonialText">"Eyuel's physics tutoring helped me get into U of T. Highly recommended!" — Sarah, Grade 12</div>
                     <div class="carousel-dots" id="carouselDots"></div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- FAQ -->
-        <div class="page" id="page-faq">
-            <div class="page-inner">
-                <span class="section-badge">FAQ</span>
+        <section id="faq">
+            <div class="section-inner">
+                <div class="section-badge">FAQ</div>
                 <h2 class="section-title">Common Questions</h2>
-                <div class="faq-item active"><div class="faq-question">What subjects do you cover? <span>+</span></div><div class="faq-answer">Physics, Maths, and Amharic for Grade 7‑12 and college.</div></div>
-                <div class="faq-item"><div class="faq-question">Where are you located? <span>+</span></div><div class="faq-answer">Based in Toronto, Canada. Online sessions available nationwide.</div></div>
-                <div class="faq-item"><div class="faq-question">Can I switch from group to private? <span>+</span></div><div class="faq-answer">Absolutely, anytime.</div></div>
+                <div class="faq-item active">
+                    <div class="faq-question">What subjects do you cover? <span>+</span></div>
+                    <div class="faq-answer">Physics, Maths, and Amharic for Grade 7‑12 and college students.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where are you located? <span>+</span></div>
+                    <div class="faq-answer">Based in Toronto, Canada. Online sessions available nationwide.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I switch from group to private? <span>+</span></div>
+                    <div class="faq-answer">Absolutely, you can upgrade anytime.</div>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!-- Contact -->
-        <div class="page" id="page-contact">
-            <div class="page-inner" style="text-align:center;">
-                <span class="section-badge">Contact</span>
+        <section id="contact" style="background:#fff;">
+            <div class="section-inner" style="text-align:center;">
+                <div class="section-badge">Contact</div>
                 <h2 class="section-title">Let's Talk</h2>
-                <p style="color:var(--text-secondary); max-width:500px; margin:0 auto 30px;">Email or message to book your free consultation.</p>
-                <p style="font-size:1.4rem;">📧 <strong>hopeuptech@gmail.com</strong></p>
-                <p style="margin:12px 0;">📱 Telegram: <strong>@HopeUpTech</strong></p>
-                <button class="btn btn-primary" onclick="location.href='mailto:hopeuptech@gmail.com'">Send Email</button>
+                <div class="contact-card">
+                    <p style="font-size:1.2rem; margin-bottom:16px;">📧 <strong>hopeuptech@gmail.com</strong></p>
+                    <p style="margin-bottom:16px;">📱 Telegram: <strong>@HopeUpTech</strong></p>
+                    <a href="mailto:hopeuptech@gmail.com" class="btn btn-primary">Send Email</a>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <footer>© 2026 HopeUp Tech Tutoring · Toronto, Canada</footer>
+    <footer>
+        <p>© 2026 HopeUp Tech Tutoring Service · Toronto, Canada</p>
+    </footer>
 
     <script>
-        (function() {
-            // Page navigation
-            const pages = document.querySelectorAll('.page');
-            const navLinks = document.querySelectorAll('[data-page]');
-            function navigate(id) {
-                pages.forEach(p => p.classList.remove('active'));
-                document.getElementById(`page-${id}`).classList.add('active');
-                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('data-page')===id));
-                window.scrollTo({top:0, behavior:'smooth'});
-                document.getElementById('navLinks').classList.remove('active');
-            }
-            document.addEventListener('click', e => {
-                const btn = e.target.closest('[data-page]');
-                if(btn) { e.preventDefault(); navigate(btn.getAttribute('data-page')); }
-            });
-            document.getElementById('mobileMenuBtn').addEventListener('click', ()=>{
-                document.getElementById('navLinks').classList.toggle('active');
-            });
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
 
-            // Counters animation
-            const counters = document.querySelectorAll('.counter');
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting){
-                        const el = entry.target;
-                        const target = +el.getAttribute('data-target');
-                        let current = 0;
-                        const step = target / 80;
-                        const timer = setInterval(() => {
-                            current += step;
-                            if(current >= target){ el.textContent = target; clearInterval(timer); }
-                            else el.textContent = Math.floor(current);
-                        }, 20);
-                        obs.unobserve(el);
-                    }
-                });
-            }, {threshold:0.5});
-            counters.forEach(c => obs.observe(c));
-
-            // Testimonial carousel
-            const testimonials = [
-                '"Best tutor I\'ve ever had! Physics went from scary to fun." — Alex, Grade 11',
-                '"Our group maths sessions were affordable and super effective." — Toronto Study Group',
-                '"My Amharic writing improved dramatically in just 2 months." — Meron, College',
-            ];
-            let index = 0;
-            const textEl = document.getElementById('testimonialText');
-            const dotsEl = document.getElementById('carouselDots');
-            testimonials.forEach((_, i) => {
-                const dot = document.createElement('span');
-                dot.className = 'dot' + (i===0?' active':'');
-                dot.onclick = () => { index=i; updateTestimonial(); };
-                dotsEl.appendChild(dot);
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
-            function updateTestimonial(){
-                textEl.textContent = testimonials[index];
-                document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===index));
-            }
-            setInterval(() => { index = (index+1)%testimonials.length; updateTestimonial(); }, 5000);
+        });
 
-            // FAQ accordion
-            document.querySelectorAll('.faq-question').forEach(q => {
-                q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+        // Animated counters
+        const counters = document.querySelectorAll('.counter');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    const el = entry.target;
+                    const target = +el.getAttribute('data-target');
+                    let current = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if(current >= target){ el.textContent = target; clearInterval(timer); }
+                        else el.textContent = Math.floor(current);
+                    }, 16);
+                    observer.unobserve(el);
+                }
             });
+        }, {threshold:0.5});
+        counters.forEach(c => observer.observe(c));
 
-            // Particles
-            const canvas = document.getElementById('particles-canvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-            window.addEventListener('resize', resize);
-            resize();
-            for(let i=0; i<80; i++){
-                particles.push({
-                    x: Math.random()*canvas.width,
-                    y: Math.random()*canvas.height,
-                    vx: (Math.random()-0.5)*0.6,
-                    vy: (Math.random()-0.5)*0.6,
-                    size: Math.random()*2+1,
-                    opacity: Math.random()*0.5+0.2
-                });
-            }
-            function animate(){
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                particles.forEach(p => {
-                    p.x += p.vx; p.y += p.vy;
-                    if(p.x<0||p.x>canvas.width) p.vx*=-1;
-                    if(p.y<0||p.y>canvas.height) p.vy*=-1;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-                    ctx.fillStyle = `rgba(0,255,137,${p.opacity})`;
-                    ctx.fill();
-                });
-                requestAnimationFrame(animate);
-            }
-            animate();
-        })();
+        // Testimonials carousel
+        const testimonials = [
+            '"Best tutor I\'ve ever had! Physics went from scary to fun." — Alex, Grade 11',
+            '"Our group maths sessions were affordable and super effective." — Toronto Study Group',
+            '"My Amharic writing improved dramatically in just 2 months." — Meron, College',
+        ];
+        let index = 0;
+        const textEl = document.getElementById('testimonialText');
+        const dotsEl = document.getElementById('carouselDots');
+        testimonials.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.className = 'dot' + (i===0?' active':'');
+            dot.onclick = () => { index=i; updateTestimonial(); };
+            dotsEl.appendChild(dot);
+        });
+        function updateTestimonial(){
+            textEl.textContent = testimonials[index];
+            document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===index));
+        }
+        setInterval(() => { index = (index+1)%testimonials.length; updateTestimonial(); }, 5000);
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+        });
     </script>
 </body>
 </html>
