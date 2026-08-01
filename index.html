@@ -41,10 +41,6 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: var(--bg-primary);
@@ -55,7 +51,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Subtle animated background grid */
+        /* Subtle background effects */
         body::before {
             content: '';
             position: fixed;
@@ -69,10 +65,7 @@
                 radial-gradient(ellipse at 20% 15%, rgba(0, 212, 170, 0.04) 0%, transparent 50%),
                 radial-gradient(ellipse at 75% 60%, rgba(108, 92, 231, 0.04) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 85%, rgba(240, 165, 0, 0.03) 0%, transparent 50%);
-            background-size: 100% 100%;
         }
-
-        /* Grid overlay */
         body::after {
             content: '';
             position: fixed;
@@ -96,17 +89,11 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(10, 10, 15, 0.75);
+            background: rgba(10, 10, 15, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             transition: var(--transition);
-        }
-
-        nav.scrolled {
-            background: rgba(10, 10, 15, 0.92);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            border-bottom: 1px solid var(--border-light);
         }
 
         .nav-inner {
@@ -127,8 +114,8 @@
             font-size: 1.3rem;
             color: var(--text-primary);
             letter-spacing: -0.3px;
+            cursor: pointer;
         }
-
         .nav-logo .logo-icon {
             width: 40px;
             height: 40px;
@@ -142,14 +129,12 @@
             font-weight: 900;
             box-shadow: var(--shadow-glow-green);
         }
-
         .nav-links {
             display: flex;
             gap: 8px;
             list-style: none;
             flex-wrap: wrap;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--text-secondary);
@@ -158,30 +143,24 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
+            cursor: pointer;
             white-space: nowrap;
-            position: relative;
         }
-
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.06);
         }
-
-        .nav-cta {
-            background: var(--gradient-1) !important;
-            color: #000 !important;
-            font-weight: 600 !important;
-            padding: 10px 20px !important;
-            border-radius: 24px !important;
+        .nav-links a.nav-cta {
+            background: var(--gradient-1);
+            color: #000;
+            font-weight: 600;
+            padding: 10px 20px;
             box-shadow: 0 4px 18px rgba(0, 212, 170, 0.3);
-            transition: var(--transition) !important;
         }
-
-        .nav-cta:hover {
+        .nav-links a.nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(0, 212, 170, 0.45) !important;
-            background: var(--gradient-1) !important;
-            color: #000 !important;
+            box-shadow: 0 8px 28px rgba(0, 212, 170, 0.45);
         }
 
         .mobile-menu-btn {
@@ -192,7 +171,6 @@
             padding: 8px;
             z-index: 1001;
         }
-
         .mobile-menu-btn span {
             display: block;
             width: 26px;
@@ -203,22 +181,50 @@
             transition: var(--transition);
         }
 
-        /* ============ HERO SECTION ============ */
-        .hero {
+        /* ============ PAGE CONTAINER ============ */
+        .page-container {
             position: relative;
             z-index: 1;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 24px 80px;
-            text-align: center;
+            padding-top: 76px;
         }
 
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            padding: 60px 24px 40px;
+            animation: none;
+        }
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .page-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============ HOME PAGE ============ */
         .hero-content {
+            text-align: center;
             max-width: 750px;
+            margin: 0 auto;
         }
-
         .hero-badge {
             display: inline-block;
             padding: 8px 18px;
@@ -231,41 +237,32 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease-out;
         }
-
         .hero h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 800;
             letter-spacing: -1.5px;
             line-height: 1.1;
             margin-bottom: 16px;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
         }
-
         .hero h1 .highlight {
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: transparent;
         }
-
         .hero-subtitle {
             font-size: 1.2rem;
             color: var(--text-secondary);
             margin-bottom: 32px;
-            animation: fadeInUp 0.6s ease-out 0.2s both;
         }
-
         .hero-buttons {
             display: flex;
             gap: 14px;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease-out 0.3s both;
+            margin-bottom: 40px;
         }
-
         .btn {
             display: inline-block;
             padding: 14px 28px;
@@ -278,7 +275,6 @@
             transition: var(--transition);
             letter-spacing: -0.2px;
         }
-
         .btn-primary {
             background: var(--gradient-1);
             color: #000;
@@ -288,7 +284,6 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 36px rgba(0, 212, 170, 0.5);
         }
-
         .btn-outline {
             background: transparent;
             color: var(--text-primary);
@@ -299,48 +294,30 @@
             background: rgba(0, 212, 170, 0.06);
             transform: translateY(-3px);
         }
-
-        /* Stats row */
         .hero-stats {
             display: flex;
             gap: 40px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 56px;
-            animation: fadeInUp 0.6s ease-out 0.4s both;
+            margin-top: 20px;
         }
-
         .hero-stat {
             text-align: center;
         }
         .hero-stat .stat-number {
             font-size: 2.4rem;
             font-weight: 800;
-            letter-spacing: -1px;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: transparent;
         }
         .hero-stat .stat-label {
             font-size: 0.85rem;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
         }
 
-        /* ============ SECTION STYLES ============ */
-        section {
-            position: relative;
-            z-index: 1;
-            padding: 80px 24px;
-        }
-
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
+        /* ============ SUBJECT CARDS ============ */
         .section-label {
             display: inline-block;
             padding: 6px 16px;
@@ -354,7 +331,6 @@
             text-transform: uppercase;
             margin-bottom: 12px;
         }
-
         .section-title {
             font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 800;
@@ -363,18 +339,14 @@
         }
         .section-desc {
             color: var(--text-secondary);
-            font-size: 1.05rem;
             max-width: 550px;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
-
-        /* ============ SUBJECT CARDS ============ */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
-
         .subject-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -383,68 +355,13 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            cursor: default;
         }
-
-        .subject-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            opacity: 0;
-            transition: var(--transition);
-            pointer-events: none;
-        }
-
         .subject-card:hover {
             transform: translateY(-6px);
             border-color: var(--border-light);
             box-shadow: var(--shadow-card);
             background: var(--bg-card-hover);
         }
-
-        .subject-card.card-physics:hover {
-            border-color: rgba(0, 212, 170, 0.4);
-            box-shadow: var(--shadow-glow-green);
-        }
-        .subject-card.card-physics:hover::after {
-            background: rgba(0, 212, 170, 0.06);
-            opacity: 1;
-        }
-        .subject-card.card-physics .card-icon {
-            background: rgba(0, 212, 170, 0.12);
-            color: var(--accent);
-        }
-
-        .subject-card.card-maths:hover {
-            border-color: rgba(108, 92, 231, 0.4);
-            box-shadow: var(--shadow-glow-purple);
-        }
-        .subject-card.card-maths:hover::after {
-            background: rgba(108, 92, 231, 0.06);
-            opacity: 1;
-        }
-        .subject-card.card-maths .card-icon {
-            background: rgba(108, 92, 231, 0.12);
-            color: var(--accent2);
-        }
-
-        .subject-card.card-amharic:hover {
-            border-color: rgba(240, 165, 0, 0.4);
-            box-shadow: var(--shadow-glow-gold);
-        }
-        .subject-card.card-amharic:hover::after {
-            background: rgba(240, 165, 0, 0.06);
-            opacity: 1;
-        }
-        .subject-card.card-amharic .card-icon {
-            background: rgba(240, 165, 0, 0.12);
-            color: var(--gold);
-        }
-
         .card-icon {
             width: 52px;
             height: 52px;
@@ -454,80 +371,48 @@
             justify-content: center;
             font-size: 1.6rem;
             margin-bottom: 18px;
-            transition: var(--transition);
+            background: rgba(0, 212, 170, 0.12);
+            color: var(--accent);
         }
-
         .subject-card h3 {
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 8px;
-            letter-spacing: -0.3px;
         }
         .subject-card p {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            line-height: 1.5;
         }
 
-        /* ============ GRADE LEVELS ============ */
-        .grades-section {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+        /* ============ PRICING PAGE ============ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
         }
-
-        .grade-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .grade-tag {
-            padding: 12px 24px;
-            border-radius: 28px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            transition: var(--transition);
-            cursor: default;
-            letter-spacing: -0.2px;
-        }
-
-        .grade-tag:hover {
-            border-color: var(--accent);
-            background: rgba(0, 212, 170, 0.06);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow-green);
-        }
-
-        .grade-tag.college-tag:hover {
-            border-color: var(--accent2);
-            background: rgba(108, 92, 231, 0.06);
-            box-shadow: var(--shadow-glow-purple);
-        }
-
-        /* ============ PRICING ============ */
         .pricing-card {
             background: var(--bg-card);
-            border: 2px solid var(--accent);
+            border: 2px solid var(--border);
             border-radius: var(--radius-xl);
-            padding: 40px 32px;
+            padding: 40px 28px;
             text-align: center;
-            max-width: 420px;
-            margin: 0 auto;
             position: relative;
-            box-shadow: var(--shadow-glow-green);
             transition: var(--transition);
         }
-
-        .pricing-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 0 60px rgba(0, 212, 170, 0.25);
+        .pricing-card.featured {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-glow-green);
         }
-
+        .pricing-card.featured:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 50px rgba(0, 212, 170, 0.3);
+        }
+        .pricing-card:not(.featured):hover {
+            border-color: var(--accent2);
+            box-shadow: var(--shadow-glow-purple);
+            transform: translateY(-4px);
+        }
         .pricing-badge {
             position: absolute;
             top: -14px;
@@ -539,39 +424,44 @@
             border-radius: 14px;
             font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
             white-space: nowrap;
-            box-shadow: 0 4px 16px rgba(0, 212, 170, 0.4);
         }
-
+        .pricing-type {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 10px;
+            color: var(--text-primary);
+        }
         .pricing-price {
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 900;
             letter-spacing: -2px;
-            margin: 16px 0 4px;
+            margin: 10px 0 4px;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: transparent;
+        }
+        .pricing-card:not(.featured) .pricing-price {
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            background-clip: text;
         }
         .pricing-unit {
             color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         .pricing-features {
             list-style: none;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
+            text-align: left;
+            padding: 0 10px;
         }
         .pricing-features li {
-            padding: 8px 0;
+            padding: 6px 0;
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             border-bottom: 1px solid var(--border);
-        }
-        .pricing-features li:last-child {
-            border-bottom: none;
         }
         .pricing-features li::before {
             content: '✓ ';
@@ -579,36 +469,70 @@
             font-weight: 700;
         }
 
-        /* ============ CTA BANNER ============ */
-        .cta-banner {
-            background: var(--bg-secondary);
+        /* ============ ABOUT PAGE ============ */
+        .about-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 48px 36px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+        }
+        .about-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--gradient-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-glow-purple);
+        }
+        .about-details h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .about-details .badge-exp {
+            display: inline-block;
+            background: rgba(240, 165, 0, 0.12);
+            color: var(--gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .about-details p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        /* ============ CONTACT PAGE ============ */
+        .contact-card {
+            background: var(--bg-card);
             border-radius: var(--radius-xl);
             padding: 48px 32px;
             text-align: center;
             border: 1px solid var(--border-light);
-            position: relative;
-            overflow: hidden;
         }
-        .cta-banner::after {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(0, 212, 170, 0.04);
-            pointer-events: none;
+        .contact-card h2 {
+            margin-bottom: 12px;
         }
-        .cta-banner h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
-        .cta-banner p {
+        .contact-card p {
             color: var(--text-secondary);
             margin-bottom: 24px;
+        }
+        .contact-email {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
         }
 
         /* ============ FOOTER ============ */
@@ -616,36 +540,11 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            padding: 32px 24px;
+            padding: 24px;
             color: var(--text-muted);
             font-size: 0.85rem;
             border-top: 1px solid var(--border);
-        }
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        /* ============ ANIMATIONS ============ */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
+            margin-top: 40px;
         }
 
         /* ============ RESPONSIVE ============ */
@@ -662,7 +561,6 @@
                 gap: 4px;
                 transition: var(--transition);
                 border-left: 1px solid var(--border);
-                box-shadow: -8px 0 30px rgba(0, 0, 0, 0.6);
             }
             .nav-links.active {
                 right: 0;
@@ -670,73 +568,39 @@
             .nav-links a {
                 display: block;
                 padding: 12px 16px;
-                border-radius: 12px;
             }
             .mobile-menu-btn {
                 display: block;
             }
             .hero-stats {
-                gap: 24px;
+                gap: 20px;
             }
-            .hero-stat .stat-number {
-                font-size: 1.8rem;
-            }
-            .cards-grid {
+            .cards-grid,
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
-            .pricing-price {
-                font-size: 3rem;
-            }
-            section {
-                padding: 56px 16px;
-            }
-            .hero {
-                padding: 100px 16px 60px;
-            }
-            .grade-tags {
-                gap: 8px;
-            }
-            .grade-tag {
-                padding: 10px 18px;
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .hero-buttons {
+            .about-card {
                 flex-direction: column;
-                align-items: center;
-            }
-            .btn {
-                width: 100%;
                 text-align: center;
-            }
-            .pricing-card {
-                padding: 28px 18px;
-            }
-            .pricing-price {
-                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== NAVIGATION ==================== -->
+    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-inner">
-            <a href="#" class="nav-logo">
+            <div class="nav-logo" data-page="home">
                 <div class="logo-icon">⚡</div>
                 HopeUp Tech
-            </a>
+            </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#subjects">Subjects</a></li>
-                <li><a href="#grades">Grade Levels</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+                <li><a data-page="home" class="active">Home</a></li>
+                <li><a data-page="subjects">Subjects</a></li>
+                <li><a data-page="pricing">Pricing</a></li>
+                <li><a data-page="about">About</a></li>
+                <li><a data-page="contact" class="nav-cta">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -744,219 +608,208 @@
         </div>
     </nav>
 
-    <!-- ==================== HERO ==================== -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-badge">✦ Trusted Tutoring Service</div>
-            <h1>Master <span class="highlight">Physics, Maths</span> &amp; <span class="highlight">Amharic</span></h1>
-            <p class="hero-subtitle">
-                Expert tutoring for Grade 7–12 and College students.<br>
-                Affordable, personalized, and results-driven.
-            </p>
-            <div class="hero-buttons">
-                <a href="#pricing" class="btn btn-primary">View Pricing — 20/hr</a>
-                <a href="#subjects" class="btn btn-outline">Explore Subjects</a>
-            </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Core Subjects</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-number">7–12</div>
-                    <div class="stat-label">Grade Levels</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-number">20/hr</div>
-                    <div class="stat-label">Flat Rate</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-number">1-on-1</div>
-                    <div class="stat-label">Personalized</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Page Container -->
+    <div class="page-container">
 
-    <!-- ==================== SUBJECTS ==================== -->
-    <section id="subjects">
-        <div class="section-inner">
-            <div class="section-label">What We Teach</div>
-            <h2 class="section-title">Core Subjects</h2>
-            <p class="section-desc">
-                Each subject is taught with a structured approach, tailored to the student's pace and learning style.
-            </p>
-            <div class="cards-grid">
-                <!-- Physics Card -->
-                <div class="subject-card card-physics animate-on-scroll">
-                    <div class="card-icon">🔬</div>
-                    <h3>Physics</h3>
-                    <p>
-                        From mechanics to electromagnetism — build a rock-solid understanding of physics concepts with clear explanations and problem-solving practice. Ideal for exam prep and concept mastery.
+        <!-- HOME PAGE -->
+        <div class="page active" id="page-home">
+            <div class="page-inner">
+                <div class="hero-content">
+                    <div class="hero-badge">✦ Trusted Tutoring · 8 Years Exp</div>
+                    <h1>Master <span class="highlight">Physics, Maths</span> &amp; <span class="highlight">Amharic</span></h1>
+                    <p class="hero-subtitle">
+                        Expert tutoring for Grade 7–12 and College students.<br>
+                        Affordable group and private sessions, tailored to your goals.
                     </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" data-page="pricing">View Pricing</button>
+                        <button class="btn btn-outline" data-page="subjects">Explore Subjects</button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="stat-number">8+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Core Subjects</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="stat-number">15-20</div>
+                            <div class="stat-label">Birr / Hour</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="stat-number">7-12+</div>
+                            <div class="stat-label">Grade Levels</div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Maths Card -->
-                <div class="subject-card card-maths animate-on-scroll">
-                    <div class="card-icon">📐</div>
-                    <h3>Maths</h3>
-                    <p>
-                        Algebra, geometry, calculus, and beyond. We break down complex problems into simple steps, helping students gain confidence and excel in mathematics at every level.
+            </div>
+        </div>
+
+        <!-- SUBJECTS PAGE -->
+        <div class="page" id="page-subjects">
+            <div class="page-inner">
+                <span class="section-label">What We Teach</span>
+                <h2 class="section-title">Core Subjects</h2>
+                <p class="section-desc">Each subject is taught with a structured, student‑centered approach.</p>
+                <div class="cards-grid">
+                    <div class="subject-card">
+                        <div class="card-icon">🔬</div>
+                        <h3>Physics</h3>
+                        <p>From mechanics to electromagnetism — clear explanations and problem-solving practice for exams and deeper understanding.</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="card-icon">📐</div>
+                        <h3>Maths</h3>
+                        <p>Algebra, geometry, calculus, and more. We break down complex problems into simple steps.</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="card-icon">📖</div>
+                        <h3>Amharic</h3>
+                        <p>Reading, writing, grammar and literature. Perfect for native speakers or learners at any level.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRICING PAGE -->
+        <div class="page" id="page-pricing">
+            <div class="page-inner" style="text-align:center;">
+                <span class="section-label">Simple Pricing</span>
+                <h2 class="section-title">Choose Your Plan</h2>
+                <p class="section-desc" style="margin:0 auto 40px;">Transparent rates. No hidden fees.</p>
+                <div class="pricing-grid">
+                    <!-- Group Pricing -->
+                    <div class="pricing-card">
+                        <div class="pricing-badge">👥 Best for Collaboration</div>
+                        <div class="pricing-type">Group Session</div>
+                        <div class="pricing-price">15</div>
+                        <div class="pricing-unit">Birr / Hour per student</div>
+                        <ul class="pricing-features">
+                            <li>Small group (2-5 students)</li>
+                            <li>Interactive learning</li>
+                            <li>Same curriculum focus</li>
+                            <li>Peer discussion encouraged</li>
+                        </ul>
+                        <button class="btn btn-outline" data-page="contact" style="width:100%;">Book Group</button>
+                    </div>
+                    <!-- Private Pricing -->
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">⭐ Most Popular</div>
+                        <div class="pricing-type">Private 1‑on‑1</div>
+                        <div class="pricing-price">20</div>
+                        <div class="pricing-unit">Birr / Hour</div>
+                        <ul class="pricing-features">
+                            <li>Personalized attention</li>
+                            <li>Flexible pace & schedule</li>
+                            <li>Deep concept mastery</li>
+                            <li>Exam & homework support</li>
+                        </ul>
+                        <button class="btn btn-primary" data-page="contact" style="width:100%;">Book Private</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div class="page" id="page-about">
+            <div class="page-inner">
+                <span class="section-label">Your Tutor</span>
+                <h2 class="section-title">Meet the Expert</h2>
+                <div class="about-card">
+                    <div class="about-avatar">🧑‍🏫</div>
+                    <div class="about-details">
+                        <h3>Eyuel (HopeUp Tech)</h3>
+                        <span class="badge-exp">🏆 8+ Years Teaching Experience</span>
+                        <p>
+                            With over 8 years of dedicated tutoring, I’ve helped hundreds of students excel in Physics, Maths, and Amharic. 
+                            I believe in patient, step‑by‑step explanations that build real confidence. 
+                            Whether you’re preparing for national exams or need support with college coursework, I’m here to guide you.
+                        </p>
+                        <p style="margin-top:12px; color:var(--accent); font-weight:500;">
+                            📍 Available online & in‑person · Grades 7–12 & College
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div class="page" id="page-contact">
+            <div class="page-inner">
+                <div class="contact-card">
+                    <span class="section-label">Get In Touch</span>
+                    <h2 class="section-title">Start Learning Today</h2>
+                    <p>Ready to book a session or ask a question? Reach out directly.</p>
+                    <a href="mailto:hopeuptech@gmail.com" class="contact-email">📧 hopeuptech@gmail.com</a>
+                    <p style="margin-top:20px; color:var(--text-muted);">
+                        Or message on Telegram: <strong style="color:var(--text-primary);">@HopeUpTech</strong>
                     </p>
-                </div>
-                <!-- Amharic Card -->
-                <div class="subject-card card-amharic animate-on-scroll">
-                    <div class="card-icon">📖</div>
-                    <h3>Amharic</h3>
-                    <p>
-                        Master the Amharic language — reading, writing, grammar, and literature. Perfect for native speakers wanting to strengthen their skills or learners exploring the language.
-                    </p>
+                    <button class="btn btn-primary" style="margin-top:28px;" onclick="window.location.href='mailto:hopeuptech@gmail.com'">
+                        Send Email Now
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- ==================== GRADE LEVELS ==================== -->
-    <section class="grades-section" id="grades">
-        <div class="section-inner" style="text-align:center;">
-            <div class="section-label">Who We Serve</div>
-            <h2 class="section-title">Grade Levels</h2>
-            <p class="section-desc" style="margin:0 auto 36px;">
-                We tutor students across a wide range — from middle school through college.
-            </p>
-            <div class="grade-tags">
-                <span class="grade-tag">Grade 7</span>
-                <span class="grade-tag">Grade 8</span>
-                <span class="grade-tag">Grade 9</span>
-                <span class="grade-tag">Grade 10</span>
-                <span class="grade-tag">Grade 11</span>
-                <span class="grade-tag">Grade 12</span>
-                <span class="grade-tag college-tag">🎓 College</span>
-            </div>
-            <p style="color:var(--text-muted);margin-top:20px;font-size:0.9rem;">
-                All sessions are adapted to the student's curriculum and academic goals.
-            </p>
-        </div>
-    </section>
+    </div>
 
-    <!-- ==================== PRICING ==================== -->
-    <section id="pricing">
-        <div class="section-inner" style="text-align:center;">
-            <div class="section-label">Simple Pricing</div>
-            <h2 class="section-title">Affordable &amp; Transparent</h2>
-            <p class="section-desc" style="margin:0 auto 40px;">
-                One flat rate. No hidden fees. Pay only for the time you need.
-            </p>
-            <div class="pricing-card animate-on-scroll">
-                <div class="pricing-badge">⭐ Best Value</div>
-                <div class="pricing-price">20</div>
-                <div class="pricing-unit">Birr / Hour</div>
-                <ul class="pricing-features">
-                    <li>1-on-1 personalized tutoring</li>
-                    <li>Physics, Maths &amp; Amharic</li>
-                    <li>Grade 7–12 &amp; College level</li>
-                    <li>Flexible scheduling</li>
-                    <li>Online &amp; in-person options</li>
-                </ul>
-                <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center;">Book a Session</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== CTA / CONTACT ==================== -->
-    <section id="contact">
-        <div class="section-inner">
-            <div class="cta-banner animate-on-scroll">
-                <div class="section-label">Get In Touch</div>
-                <h3>Ready to Start Learning?</h3>
-                <p>
-                    Reach out today to schedule your first session.<br>
-                    We'll match you with the right tutor for your needs.
-                </p>
-                <a href="mailto:hopeuptech@gmail.com" class="btn btn-primary" style="font-size:1.05rem;padding:16px 32px;">
-                    📧 hopeuptech@gmail.com
-                </a>
-                <p style="margin-top:16px;color:var(--text-muted);font-size:0.9rem;">
-                    Or call / message us on Telegram: <strong style="color:var(--text-primary);">@HopeUpTech</strong>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== FOOTER ==================== -->
     <footer>
-        <p>&copy; 2026 <strong>HopeUp Tech Tutoring Service</strong>. All rights reserved. | Designed with ❤️ for students.</p>
+        <p>© 2026 <strong>HopeUp Tech Tutoring Service</strong>. All rights reserved. | 8+ Years of Excellence</p>
     </footer>
 
-    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+        (function() {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('[data-page]');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navLinks');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 60) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Scroll-triggered animations
-        const animateElements = document.querySelectorAll('.animate-on-scroll');
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+            // Function to switch pages with fade
+            function navigateTo(pageId) {
+                // Update active page
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === `page-${pageId}`) {
+                        page.classList.add('active');
                     }
                 });
-            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-        );
 
-        animateElements.forEach(el => observer.observe(el));
+                // Update active nav link
+                navLinks.forEach(link => {
+                    const linkPage = link.getAttribute('data-page');
+                    if (linkPage === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
 
-        // Trigger visible check on load for elements already in view
-        window.addEventListener('load', () => {
-            animateElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 40) {
-                    el.classList.add('visible');
-                }
-            });
-        });
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
 
-        // Smooth scroll for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const target = document.querySelector(targetId);
-                if (target) {
+            // Click handlers for all data-page elements
+            document.addEventListener('click', function(e) {
+                const target = e.target.closest('[data-page]');
+                if (!target) return;
+                const pageId = target.getAttribute('data-page');
+                if (pageId) {
                     e.preventDefault();
-                    const navHeight = navbar.offsetHeight + 16;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset -
-                        navHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    navigateTo(pageId);
                 }
             });
-        });
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // Set initial active nav based on current page (home default)
+            // (Already set in HTML)
+        })();
     </script>
 </body>
 </html>
