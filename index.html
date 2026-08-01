@@ -3,36 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HopeUp Tech Tutoring Service | Physics • Maths • Amharic</title>
+    <title>HopeUp Tech Tutoring | Physics • Maths • Amharic | Canada</title>
     <style>
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-card: #16161f;
-            --bg-card-hover: #1c1c28;
-            --accent: #00d4aa;
-            --accent-glow: #00d4aa55;
-            --accent2: #6c5ce7;
-            --accent2-glow: #6c5ce755;
-            --gold: #f0a500;
-            --gold-glow: #f0a50044;
-            --text-primary: #e8e8f0;
-            --text-secondary: #b0b0c0;
-            --text-muted: #7a7a90;
-            --border: #222230;
-            --border-light: #2a2a3a;
-            --gradient-1: linear-gradient(135deg, #00d4aa, #00b894);
-            --gradient-2: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            --gradient-3: linear-gradient(135deg, #f0a500, #fdcb6e);
-            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-            --shadow-glow-green: 0 0 40px rgba(0, 212, 170, 0.15);
-            --shadow-glow-purple: 0 0 40px rgba(108, 92, 231, 0.15);
-            --shadow-glow-gold: 0 0 40px rgba(240, 165, 0, 0.12);
-            --radius-sm: 10px;
-            --radius-md: 16px;
+            --bg-primary: #050508;
+            --bg-card: #0d0d1a;
+            --bg-card-hover: #141428;
+            --accent: #00ff89;
+            --accent-glow: rgba(0, 255, 137, 0.35);
+            --accent2: #7b61ff;
+            --accent2-glow: rgba(123, 97, 255, 0.35);
+            --text-primary: #f5f5ff;
+            --text-secondary: #b0b0c8;
+            --border: #222240;
+            --gradient-1: linear-gradient(135deg, #00ff89, #00cc6a);
+            --gradient-2: linear-gradient(135deg, #7b61ff, #b56eff);
             --radius-lg: 24px;
-            --radius-xl: 32px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
@@ -42,59 +29,41 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        body::before {
-            content: '';
+        /* Particles Canvas */
+        #particles-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             z-index: 0;
-            background: radial-gradient(ellipse at 20% 15%, rgba(0,212,170,0.04) 0%, transparent 50%),
-                radial-gradient(ellipse at 75% 60%, rgba(108,92,231,0.04) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 85%, rgba(240,165,0,0.03) 0%, transparent 50%);
-        }
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             pointer-events: none;
-            z-index: 0;
-            opacity: 0.03;
-            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
+            opacity: 0.5;
         }
 
-        /* ============ NAVIGATION ============ */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(10,10,15,0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            transition: var(--transition);
+            background: rgba(5, 5, 8, 0.8);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
         .nav-inner {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 16px 24px;
+            padding: 16px 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -102,87 +71,80 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            letter-spacing: -0.3px;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #fff;
             cursor: pointer;
+            text-decoration: none;
         }
-        .nav-logo .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--radius-sm);
+        .logo-glow {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             background: var(--gradient-1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: #000;
-            font-weight: 900;
-            box-shadow: var(--shadow-glow-green);
+            box-shadow: 0 0 25px rgba(0, 255, 137, 0.6);
         }
         .nav-links {
             display: flex;
-            gap: 8px;
+            gap: 4px;
             list-style: none;
-            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--text-secondary);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: var(--transition);
+            transition: all 0.25s;
             cursor: pointer;
-            white-space: nowrap;
         }
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--text-primary);
-            background: rgba(255,255,255,0.06);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
         }
-        .nav-links a.nav-cta {
-            background: var(--gradient-1);
-            color: #000;
-            font-weight: 600;
-            padding: 10px 20px;
-            box-shadow: 0 4px 18px rgba(0,212,170,0.3);
+        .nav-cta {
+            background: var(--gradient-1) !important;
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 6px 22px rgba(0, 255, 137, 0.4);
         }
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
             z-index: 1001;
         }
         .mobile-menu-btn span {
             display: block;
-            width: 26px;
-            height: 2.5px;
-            background: var(--text-primary);
-            border-radius: 2px;
+            width: 28px;
+            height: 3px;
+            background: #fff;
             margin: 6px 0;
-            transition: var(--transition);
+            border-radius: 3px;
         }
 
-        /* ============ PAGE CONTAINER ============ */
+        /* Page Container */
         .page-container {
             position: relative;
             z-index: 1;
             min-height: 100vh;
-            padding-top: 76px;
+            padding-top: 90px;
         }
         .page {
             display: none;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.35s ease, transform 0.35s ease;
-            padding: 60px 24px 40px;
+            transform: translateY(15px);
+            transition: opacity 0.4s, transform 0.4s;
+            padding: 50px 32px 40px;
         }
         .page.active {
             display: block;
@@ -190,92 +152,90 @@
             transform: translateY(0);
         }
         .page-inner {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* ============ TYPOGRAPHY ============ */
-        .section-label {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 16px;
-            background: rgba(108,92,231,0.1);
-            border: 1px solid rgba(108,92,231,0.2);
-            color: var(--accent2);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .section-title {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-        .section-desc {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 28px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: var(--transition);
-            letter-spacing: -0.2px;
-        }
-        .btn-primary {
-            background: var(--gradient-1);
-            color: #000;
-            box-shadow: 0 6px 24px rgba(0,212,170,0.35);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 36px rgba(0,212,170,0.5);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--border-light);
-        }
-        .btn-outline:hover {
-            border-color: var(--accent);
-            background: rgba(0,212,170,0.06);
-            transform: translateY(-3px);
-        }
-
-        /* ============ HOME PAGE ============ */
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 18px;
-            border-radius: 20px;
-            background: rgba(0,212,170,0.1);
-            border: 1px solid rgba(0,212,170,0.25);
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 30px;
+            background: rgba(0, 255, 137, 0.08);
+            border: 1px solid rgba(0, 255, 137, 0.2);
             color: var(--accent);
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+        .section-title {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
             font-weight: 800;
             letter-spacing: -1.5px;
             line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin-bottom: 50px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 34px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            letter-spacing: -0.3px;
+        }
+        .btn-primary {
+            background: var(--gradient-1);
+            color: #000;
+            box-shadow: 0 10px 28px rgba(0, 255, 137, 0.45);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 38px rgba(0, 255, 137, 0.7);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(0, 255, 137, 0.04);
+            transform: translateY(-3px);
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        .hero-text {
+            flex: 1 1 500px;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.0;
+            margin-bottom: 20px;
         }
         .hero h1 .highlight {
             background: var(--gradient-1);
@@ -283,354 +243,200 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
+        .hero-image {
+            flex: 0 0 280px;
+            position: relative;
         }
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
+        .hero-image img {
+            width: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 40px var(--accent-glow);
+            object-fit: cover;
+            aspect-ratio: 1/1;
         }
         .hero-stats {
             display: flex;
-            gap: 40px;
-            justify-content: center;
+            gap: 50px;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
-        .hero-stat {
-            text-align: center;
-        }
-        .hero-stat .stat-number {
-            font-size: 2.4rem;
-            font-weight: 800;
+        .stat-number {
+            font-size: 2.6rem;
+            font-weight: 900;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero-stat .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
 
-        /* ============ CARDS & GRIDS ============ */
+        /* Cards */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
-        .subject-card {
+        .glow-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 32px 28px;
-            transition: var(--transition);
+            padding: 36px 28px;
+            transition: all 0.35s;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
-        .subject-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-light);
-            box-shadow: var(--shadow-card);
-            background: var(--bg-card-hover);
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 255, 137, 0.08), transparent 70%);
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .glow-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 0 35px rgba(0, 255, 137, 0.25);
+        }
+        .glow-card:hover::before {
+            opacity: 1;
         }
         .card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius-sm);
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(0, 255, 137, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            background: rgba(0,212,170,0.12);
-            color: var(--accent);
-        }
-        .subject-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .subject-card p,
-        .subject-card ul {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .subject-card ul {
-            list-style: none;
-            margin-top: 12px;
-        }
-        .subject-card ul li::before {
-            content: '• ';
+            font-size: 2rem;
+            margin-bottom: 24px;
             color: var(--accent);
         }
 
-        /* ============ PRICING PAGE ============ */
+        /* Pricing */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
         }
         .pricing-card {
             background: var(--bg-card);
             border: 2px solid var(--border);
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-lg);
             padding: 40px 28px;
             text-align: center;
             position: relative;
-            transition: var(--transition);
+            transition: 0.35s;
         }
         .pricing-card.featured {
             border-color: var(--accent);
-            box-shadow: var(--shadow-glow-green);
+            box-shadow: 0 0 40px rgba(0, 255, 137, 0.3);
         }
-        .pricing-badge {
+        .badge {
             position: absolute;
             top: -14px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--gradient-1);
             color: #000;
-            padding: 6px 18px;
-            border-radius: 14px;
-            font-size: 0.8rem;
+            padding: 6px 20px;
+            border-radius: 20px;
             font-weight: 700;
-            white-space: nowrap;
+            font-size: 0.85rem;
         }
-        .pricing-type {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-top: 10px;
-        }
-        .pricing-price {
-            font-size: 3.8rem;
+        .price {
+            font-size: 4rem;
             font-weight: 900;
-            letter-spacing: -2px;
-            margin: 10px 0 4px;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .pricing-card:not(.featured) .pricing-price {
+        .pricing-card:not(.featured) .price {
             background: var(--gradient-2);
             -webkit-background-clip: text;
             background-clip: text;
         }
-        .pricing-unit {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 24px;
-            text-align: left;
-            padding: 0 10px;
-        }
-        .pricing-features li {
-            padding: 6px 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .pricing-features li::before {
-            content: '✓ ';
-            color: var(--accent);
-            font-weight: 700;
-        }
 
-        /* ============ HOW IT WORKS ============ */
-        .steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            justify-content: center;
-        }
-        .step-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 28px 20px;
-            text-align: center;
-            flex: 1 1 200px;
-            max-width: 240px;
-            transition: var(--transition);
-        }
-        .step-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-        .step-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-        .step-card h4 {
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        /* ============ ABOUT PAGE ============ */
-        .about-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-xl);
-            padding: 48px 36px;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            align-items: center;
-        }
-        .about-avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: var(--gradient-2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            flex-shrink: 0;
-            box-shadow: var(--shadow-glow-purple);
-        }
-        .badge-exp {
-            display: inline-block;
-            background: rgba(240,165,0,0.12);
-            color: var(--gold);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            margin: 12px 0;
-        }
-
-        /* ============ TESTIMONIALS ============ */
-        .testimonial-carousel {
+        /* Testimonials */
+        .carousel {
             position: relative;
-            overflow: hidden;
-            min-height: 280px;
+            min-height: 200px;
         }
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .testimonial-card {
-            min-width: 100%;
+        .testimonial {
             background: var(--bg-card);
-            border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 36px 28px;
+            padding: 40px;
             text-align: center;
-        }
-        .testimonial-text {
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--accent);
         }
         .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             margin-top: 20px;
         }
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: var(--border-light);
+            background: var(--border);
             cursor: pointer;
-            transition: var(--transition);
         }
         .dot.active {
             background: var(--accent);
         }
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.6);
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .carousel-btn.prev {
-            left: 10px;
-        }
-        .carousel-btn.next {
-            right: 10px;
-        }
 
-        /* ============ FAQ ACCORDION ============ */
+        /* FAQ */
         .faq-item {
             border: 1px solid var(--border);
-            border-radius: var(--radius-md);
+            border-radius: 16px;
             margin-bottom: 12px;
             background: var(--bg-card);
         }
         .faq-question {
-            padding: 18px 24px;
+            padding: 20px 24px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
         .faq-answer {
-            padding: 0 24px 18px;
+            padding: 0 24px 20px;
             color: var(--text-secondary);
             display: none;
-            line-height: 1.7;
         }
         .faq-item.active .faq-answer {
             display: block;
         }
-        .faq-icon {
-            font-size: 1.4rem;
-            transition: transform 0.3s;
-        }
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
 
-        /* ============ FOOTER ============ */
+        /* Footer */
         footer {
-            position: relative;
-            z-index: 1;
             text-align: center;
-            padding: 24px;
+            padding: 30px;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
-            margin-top: 40px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 260px;
+                width: 270px;
                 height: 100vh;
-                background: var(--bg-secondary);
+                background: rgba(10, 10, 18, 0.95);
                 flex-direction: column;
-                padding: 80px 24px 24px;
-                gap: 4px;
-                transition: var(--transition);
-                border-left: 1px solid var(--border);
+                padding: 90px 20px 20px;
+                backdrop-filter: blur(20px);
+                transition: 0.3s;
             }
             .nav-links.active {
                 right: 0;
@@ -638,319 +444,290 @@
             .mobile-menu-btn {
                 display: block;
             }
-            .about-card {
-                flex-direction: column;
-                text-align: center;
-            }
-            .steps {
-                flex-direction: column;
-                align-items: center;
-            }
-            .step-card {
-                max-width: 100%;
+            .hero {
+                flex-direction: column-reverse;
             }
         }
     </style>
 </head>
 <body>
+    <canvas id="particles-canvas"></canvas>
+
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav>
         <div class="nav-inner">
             <div class="nav-logo" data-page="home">
-                <div class="logo-icon">⚡</div>
+                <div class="logo-glow">⚡</div>
                 HopeUp Tech
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a data-page="home" class="active">Home</a></li>
                 <li><a data-page="subjects">Subjects</a></li>
                 <li><a data-page="pricing">Pricing</a></li>
-                <li><a data-page="how-it-works">How It Works</a></li>
+                <li><a data-page="how">How It Works</a></li>
                 <li><a data-page="about">About</a></li>
                 <li><a data-page="testimonials">Testimonials</a></li>
                 <li><a data-page="faq">FAQ</a></li>
                 <li><a data-page="contact" class="nav-cta">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <!-- Page Container -->
+    <!-- Pages -->
     <div class="page-container">
-        <!-- HOME PAGE -->
+        <!-- Home -->
         <div class="page active" id="page-home">
             <div class="page-inner">
-                <div class="hero-content">
-                    <div class="hero-badge">✦ 8+ Years Experience</div>
-                    <h1>Excel in <span class="highlight">Physics, Maths</span> &amp; <span class="highlight">Amharic</span></h1>
-                    <p class="hero-subtitle">Personalized tutoring for Grade 7‑12 and College students. Group and private sessions available at affordable rates.</p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary" data-page="pricing">See Pricing</button>
-                        <button class="btn btn-outline" data-page="subjects">Explore Subjects</button>
+                <div class="hero">
+                    <div class="hero-text">
+                        <div class="section-badge">🇨🇦 Based in Toronto, Canada</div>
+                        <h1>Master <span class="highlight">Physics, Maths</span> & <span class="highlight">Amharic</span></h1>
+                        <p class="section-desc">Expert tutoring for Grade 7‑12 & College. 8+ years experience. Group & private sessions available.</p>
+                        <div class="hero-stats">
+                            <div><div class="stat-number counter" data-target="8">0</div><div class="stat-label">Years Exp.</div></div>
+                            <div><div class="stat-number counter" data-target="500">0</div><div class="stat-label">Students</div></div>
+                            <div><div class="stat-number counter" data-target="15">0</div><div class="stat-label">CAD/hr (Group)</div></div>
+                            <div><div class="stat-number counter" data-target="20">0</div><div class="stat-label">CAD/hr (Private)</div></div>
+                        </div>
+                        <div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
+                            <button class="btn btn-primary" data-page="pricing">View Pricing</button>
+                            <button class="btn btn-outline" data-page="contact">Get Started</button>
+                        </div>
                     </div>
-                    <div class="hero-stats">
-                        <div class="hero-stat"><div class="stat-number counter" data-target="8">0</div><div class="stat-label">Years Experience</div></div>
-                        <div class="hero-stat"><div class="stat-number counter" data-target="500">0</div><div class="stat-label">Students Taught</div></div>
-                        <div class="hero-stat"><div class="stat-number counter" data-target="15">0</div><div class="stat-label">Birr/hr (Group)</div></div>
-                        <div class="hero-stat"><div class="stat-number counter" data-target="20">0</div><div class="stat-label">Birr/hr (Private)</div></div>
+                    <div class="hero-image">
+                        <img src="https://placehold.co/400x400/0d0d1a/00ff89?text=Tutor+Photo" alt="Tutor" style="width:100%; border-radius:50%;">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SUBJECTS PAGE -->
+        <!-- Subjects -->
         <div class="page" id="page-subjects">
             <div class="page-inner">
-                <span class="section-label">Subjects</span>
+                <span class="section-badge">Subjects</span>
                 <h2 class="section-title">What We Teach</h2>
-                <p class="section-desc">Our curriculum covers core subjects with a focus on deep understanding and exam readiness.</p>
                 <div class="cards-grid">
-                    <div class="subject-card">
+                    <div class="glow-card">
                         <div class="card-icon">🔬</div>
                         <h3>Physics</h3>
-                        <p>Mechanics, Electricity, Magnetism, Optics, Modern Physics – explained from basics to advanced problem‑solving.</p>
-                        <ul><li>Grade 7‑12 national curriculum</li><li>College freshman physics</li><li>Exam prep (Ethiopian University Entrance Exam)</li></ul>
+                        <p>Mechanics, Electromagnetism, Modern Physics – from fundamentals to exam mastery.</p>
                     </div>
-                    <div class="subject-card">
+                    <div class="glow-card">
                         <div class="card-icon">📐</div>
                         <h3>Maths</h3>
-                        <p>Algebra, Geometry, Trigonometry, Calculus, Statistics. Step‑by‑step methods to build confidence.</p>
-                        <ul><li>Natural & Social Science streams</li><li>SAT / GMAT quantitative prep</li><li>Homework & assignment help</li></ul>
+                        <p>Algebra, Calculus, Geometry – step‑by‑step methods for real confidence.</p>
                     </div>
-                    <div class="subject-card">
+                    <div class="glow-card">
                         <div class="card-icon">📖</div>
                         <h3>Amharic</h3>
-                        <p>Grammar, literature, essay writing, and oral skills. Suitable for native speakers and second‑language learners.</p>
-                        <ul><li>Grade 7‑12 Ministry syllabus</li><li>College Amharic courses</li><li>Reading & writing proficiency</li></ul>
+                        <p>Grammar, Literature, Writing – for native speakers and language learners.</p>
                     </div>
+                </div>
+                <div style="margin-top:30px; display:flex; gap:20px; flex-wrap:wrap;">
+                    <img src="https://placehold.co/150x100/0d0d1a/7b61ff?text=Physics+Icon" alt="Physics" style="border-radius:12px;">
+                    <img src="https://placehold.co/150x100/0d0d1a/7b61ff?text=Maths+Icon" alt="Maths" style="border-radius:12px;">
+                    <img src="https://placehold.co/150x100/0d0d1a/7b61ff?text=Amharic+Icon" alt="Amharic" style="border-radius:12px;">
                 </div>
             </div>
         </div>
 
-        <!-- PRICING PAGE -->
+        <!-- Pricing -->
         <div class="page" id="page-pricing">
             <div class="page-inner" style="text-align:center;">
-                <span class="section-label">Pricing</span>
-                <h2 class="section-title">Affordable & Transparent</h2>
-                <p class="section-desc" style="margin:0 auto 40px;">No hidden fees. Pay per session or book a package.</p>
+                <span class="section-badge">Pricing (CAD)</span>
+                <h2 class="section-title">Simple, Transparent Rates</h2>
                 <div class="pricing-grid">
                     <div class="pricing-card">
-                        <div class="pricing-badge">👥 Collaborative</div>
-                        <div class="pricing-type">Group Session</div>
-                        <div class="pricing-price">15</div>
-                        <div class="pricing-unit">Birr / Hour per student</div>
-                        <ul class="pricing-features">
-                            <li>Small groups (2‑5 students)</li>
-                            <li>Same topic & pace</li>
-                            <li>Interactive discussions</li>
-                            <li>Weekly progress updates</li>
-                            <li>Flexible timing</li>
+                        <div class="badge">👥 Group</div>
+                        <div class="price">15</div>
+                        <p>CAD / hour per student</p>
+                        <ul style="list-style:none; text-align:left; margin:24px 0;">
+                            <li>✅ 2‑5 students</li>
+                            <li>✅ Same curriculum</li>
+                            <li>✅ Interactive sessions</li>
                         </ul>
-                        <button class="btn btn-outline" data-page="contact" style="width:100%;">Inquire Group</button>
+                        <button class="btn btn-outline" data-page="contact">Inquire</button>
                     </div>
                     <div class="pricing-card featured">
-                        <div class="pricing-badge">⭐ Most Popular</div>
-                        <div class="pricing-type">Private 1‑on‑1</div>
-                        <div class="pricing-price">20</div>
-                        <div class="pricing-unit">Birr / Hour</div>
-                        <ul class="pricing-features">
-                            <li>Individualised learning plan</li>
-                            <li>Flexible schedule</li>
-                            <li>In‑depth concept focus</li>
-                            <li>Exam strategy sessions</li>
-                            <li>Priority support via chat</li>
+                        <div class="badge">⭐ Private</div>
+                        <div class="price">20</div>
+                        <p>CAD / hour</p>
+                        <ul style="list-style:none; text-align:left; margin:24px 0;">
+                            <li>✅ 1‑on‑1 attention</li>
+                            <li>✅ Flexible scheduling</li>
+                            <li>✅ Custom study plan</li>
                         </ul>
-                        <button class="btn btn-primary" data-page="contact" style="width:100%;">Book Private</button>
+                        <button class="btn btn-primary" data-page="contact">Book Now</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- HOW IT WORKS PAGE -->
-        <div class="page" id="page-how-it-works">
+        <!-- How It Works -->
+        <div class="page" id="page-how">
             <div class="page-inner">
-                <span class="section-label">Process</span>
+                <span class="section-badge">Process</span>
                 <h2 class="section-title">How It Works</h2>
-                <p class="section-desc">Getting started is simple and we guide you at every step.</p>
-                <div class="steps">
-                    <div class="step-card"><div class="step-number">1</div><h4>Free Consultation</h4><p>Tell us your goals and subject needs. We assess your level and recommend the best plan.</p></div>
-                    <div class="step-card"><div class="step-number">2</div><h4>Personalised Match</h4><p>We pair you with the ideal tutor (Eyuel) and create a custom learning roadmap.</p></div>
-                    <div class="step-card"><div class="step-number">3</div><h4>Regular Sessions</h4><p>Attend interactive online/in‑person sessions at your convenience. Group or private.</p></div>
-                    <div class="step-card"><div class="step-number">4</div><h4>Track & Improve</h4><p>Weekly feedback, practice tests, and progress reports to ensure you're advancing.</p></div>
+                <div class="cards-grid">
+                    <div class="glow-card"><div class="card-icon">1</div><h4>Free Consult</h4><p>We discuss your goals and level.</p></div>
+                    <div class="glow-card"><div class="card-icon">2</div><h4>Match</h4><p>Custom learning plan created.</p></div>
+                    <div class="glow-card"><div class="card-icon">3</div><h4>Sessions</h4><p>Interactive online/in‑person.</p></div>
+                    <div class="glow-card"><div class="card-icon">4</div><h4>Track</h4><p>Progress reports & adjustments.</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- ABOUT PAGE -->
+        <!-- About -->
         <div class="page" id="page-about">
             <div class="page-inner">
-                <span class="section-label">Tutor</span>
-                <h2 class="section-title">About Eyuel</h2>
-                <div class="about-card">
-                    <div class="about-avatar">🧑‍🏫</div>
-                    <div class="about-details">
-                        <h3>Eyuel Mengistu</h3>
-                        <span class="badge-exp">🏆 8+ Years Teaching Experience</span>
-                        <p style="margin-top:16px;">I hold a BSc in Physics and have been tutoring since 2018. My passion is making difficult concepts clear and enjoyable. I’ve helped over 500 students improve their grades and gain admission to top universities.</p>
-                        <p style="margin-top:12px; color:var(--accent);">“I believe every student can excel with the right guidance and a patient mentor.”</p>
+                <span class="section-badge">About Eyuel</span>
+                <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:center;">
+                    <img src="https://placehold.co/300x300/0d0d1a/00ff89?text=Eyuel" alt="Eyuel" style="border-radius:50%; width:200px; height:200px; object-fit:cover; border:3px solid var(--accent); box-shadow:0 0 30px var(--accent-glow);">
+                    <div style="flex:1;">
+                        <h3>8+ Years of Teaching Excellence</h3>
+                        <p style="color:var(--text-secondary); margin:16px 0;">Based in Toronto, I help students across Canada excel in Physics, Maths, and Amharic. My approach combines deep subject knowledge with patient mentorship.</p>
+                        <span style="background:rgba(0,255,137,0.1); padding:6px 18px; border-radius:20px; color:var(--accent);">📍 Available online Canada‑wide</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TESTIMONIALS PAGE -->
+        <!-- Testimonials -->
         <div class="page" id="page-testimonials">
             <div class="page-inner">
-                <span class="section-label">Testimonials</span>
+                <span class="section-badge">Testimonials</span>
                 <h2 class="section-title">What Students Say</h2>
-                <div class="testimonial-carousel">
-                    <button class="carousel-btn prev" id="prevBtn">❮</button>
-                    <div class="testimonial-track" id="testimonialTrack">
-                        <div class="testimonial-card"><p class="testimonial-text">"Eyuel's physics sessions turned my weakness into my strength. I scored an A in the national exam!"</p><p class="testimonial-author">— Abebe, Grade 12</p></div>
-                        <div class="testimonial-card"><p class="testimonial-text">"The group maths class was engaging and affordable. We all improved together."</p><p class="testimonial-author">— Tigist, Grade 10</p></div>
-                        <div class="testimonial-card"><p class="testimonial-text">"I never liked Amharic grammar until these lessons. Now I write essays confidently."</p><p class="testimonial-author">— Mekdes, College Freshman</p></div>
-                        <div class="testimonial-card"><p class="testimonial-text">"Private tutoring fit my busy schedule perfectly. Highly recommended!"</p><p class="testimonial-author">— Daniel, Grade 11</p></div>
-                    </div>
-                    <button class="carousel-btn next" id="nextBtn">❯</button>
+                <div class="carousel">
+                    <div class="testimonial" id="testimonialText">"Eyuel's physics tutoring helped me get into U of T. Highly recommended!" — Sarah, Grade 12</div>
+                    <div class="carousel-dots" id="carouselDots"></div>
                 </div>
-                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
 
-        <!-- FAQ PAGE -->
+        <!-- FAQ -->
         <div class="page" id="page-faq">
             <div class="page-inner">
-                <span class="section-label">FAQ</span>
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <div class="faq-list">
-                    <div class="faq-item active"><div class="faq-question">What subjects do you tutor? <span class="faq-icon">+</span></div><div class="faq-answer">We cover Physics, Maths, and Amharic for Grade 7‑12 and college students.</div></div>
-                    <div class="faq-item"><div class="faq-question">How are group sessions structured? <span class="faq-icon">+</span></div><div class="faq-answer">Groups of 2‑5 students follow the same curriculum. Sessions are interactive, with each student getting attention.</div></div>
-                    <div class="faq-item"><div class="faq-question">Can I switch from group to private? <span class="faq-icon">+</span></div><div class="faq-answer">Absolutely. You can upgrade anytime, and we'll adjust the plan accordingly.</div></div>
-                    <div class="faq-item"><div class="faq-question">What if I miss a session? <span class="faq-icon">+</span></div><div class="faq-answer">We offer flexible rescheduling with 24‑hour notice. No charge for the first missed session.</div></div>
-                    <div class="faq-item"><div class="faq-question">Do you help with exam preparation? <span class="faq-icon">+</span></div><div class="faq-answer">Yes, we provide past papers, timed practice, and exam strategies for national and college exams.</div></div>
-                </div>
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Common Questions</h2>
+                <div class="faq-item active"><div class="faq-question">What subjects do you cover? <span>+</span></div><div class="faq-answer">Physics, Maths, and Amharic for Grade 7‑12 and college.</div></div>
+                <div class="faq-item"><div class="faq-question">Where are you located? <span>+</span></div><div class="faq-answer">Based in Toronto, Canada. Online sessions available nationwide.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I switch from group to private? <span>+</span></div><div class="faq-answer">Absolutely, anytime.</div></div>
             </div>
         </div>
 
-        <!-- CONTACT PAGE -->
+        <!-- Contact -->
         <div class="page" id="page-contact">
             <div class="page-inner" style="text-align:center;">
-                <span class="section-label">Contact</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-desc" style="margin:0 auto 30px;">Ready to start or have questions? Reach out today.</p>
-                <div class="contact-card" style="background:var(--bg-card); border-radius:var(--radius-xl); padding:40px; border:1px solid var(--border-light);">
-                    <p style="font-size:1.2rem;">📧 <strong>hopeuptech@gmail.com</strong></p>
-                    <p style="margin-top:12px;">📱 Telegram: <strong>@HopeUpTech</strong></p>
-                    <p style="margin-top:12px; color:var(--text-muted);">📍 Addis Ababa, Ethiopia (Online & In‑person)</p>
-                    <button class="btn btn-primary" style="margin-top:24px;" onclick="window.location.href='mailto:hopeuptech@gmail.com'">Send Email</button>
-                </div>
+                <span class="section-badge">Contact</span>
+                <h2 class="section-title">Let's Talk</h2>
+                <p style="color:var(--text-secondary); max-width:500px; margin:0 auto 30px;">Email or message to book your free consultation.</p>
+                <p style="font-size:1.4rem;">📧 <strong>hopeuptech@gmail.com</strong></p>
+                <p style="margin:12px 0;">📱 Telegram: <strong>@HopeUpTech</strong></p>
+                <button class="btn btn-primary" onclick="location.href='mailto:hopeuptech@gmail.com'">Send Email</button>
             </div>
         </div>
     </div>
 
-    <footer>© 2026 HopeUp Tech Tutoring Service. All rights reserved. | 8+ Years of Excellence</footer>
+    <footer>© 2026 HopeUp Tech Tutoring · Toronto, Canada</footer>
 
     <script>
         (function() {
             // Page navigation
             const pages = document.querySelectorAll('.page');
             const navLinks = document.querySelectorAll('[data-page]');
-            const mobileBtn = document.getElementById('mobileMenuBtn');
-            const navMenu = document.getElementById('navLinks');
-
-            function navigateTo(pageId) {
+            function navigate(id) {
                 pages.forEach(p => p.classList.remove('active'));
-                const target = document.getElementById(`page-${pageId}`);
-                if (target) target.classList.add('active');
-
-                navLinks.forEach(link => {
-                    const lp = link.getAttribute('data-page');
-                    link.classList.toggle('active', lp === pageId);
-                });
-                navMenu.classList.remove('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.getElementById(`page-${id}`).classList.add('active');
+                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('data-page')===id));
+                window.scrollTo({top:0, behavior:'smooth'});
+                document.getElementById('navLinks').classList.remove('active');
             }
-
-            document.addEventListener('click', function(e) {
-                const trigger = e.target.closest('[data-page]');
-                if (!trigger) return;
-                const pageId = trigger.getAttribute('data-page');
-                if (pageId) {
-                    e.preventDefault();
-                    navigateTo(pageId);
-                }
+            document.addEventListener('click', e => {
+                const btn = e.target.closest('[data-page]');
+                if(btn) { e.preventDefault(); navigate(btn.getAttribute('data-page')); }
+            });
+            document.getElementById('mobileMenuBtn').addEventListener('click', ()=>{
+                document.getElementById('navLinks').classList.toggle('active');
             });
 
-            mobileBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-            // Animated counters on home page (Intersection Observer)
+            // Counters animation
             const counters = document.querySelectorAll('.counter');
-            const observerOptions = { threshold: 0.5 };
-            const counterObserver = new IntersectionObserver((entries, observer) => {
+            const obs = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    if(entry.isIntersecting){
                         const el = entry.target;
                         const target = +el.getAttribute('data-target');
-                        const duration = 1500;
-                        const step = target / (duration / 16);
                         let current = 0;
-                        const updateCounter = () => {
+                        const step = target / 80;
+                        const timer = setInterval(() => {
                             current += step;
-                            if (current < target) {
-                                el.textContent = Math.floor(current);
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                el.textContent = target;
-                            }
-                        };
-                        updateCounter();
-                        observer.unobserve(el);
+                            if(current >= target){ el.textContent = target; clearInterval(timer); }
+                            else el.textContent = Math.floor(current);
+                        }, 20);
+                        obs.unobserve(el);
                     }
                 });
-            }, observerOptions);
-            counters.forEach(c => counterObserver.observe(c));
+            }, {threshold:0.5});
+            counters.forEach(c => obs.observe(c));
 
             // Testimonial carousel
-            const track = document.getElementById('testimonialTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const dotsContainer = document.getElementById('carouselDots');
-            const slides = document.querySelectorAll('.testimonial-card');
-            let currentIndex = 0;
-            const totalSlides = slides.length;
-
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                document.querySelectorAll('.dot').forEach((dot, idx) => {
-                    dot.classList.toggle('active', idx === currentIndex);
-                });
+            const testimonials = [
+                '"Best tutor I\'ve ever had! Physics went from scary to fun." — Alex, Grade 11',
+                '"Our group maths sessions were affordable and super effective." — Toronto Study Group',
+                '"My Amharic writing improved dramatically in just 2 months." — Meron, College',
+            ];
+            let index = 0;
+            const textEl = document.getElementById('testimonialText');
+            const dotsEl = document.getElementById('carouselDots');
+            testimonials.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (i===0?' active':'');
+                dot.onclick = () => { index=i; updateTestimonial(); };
+                dotsEl.appendChild(dot);
+            });
+            function updateTestimonial(){
+                textEl.textContent = testimonials[index];
+                document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===index));
             }
-
-            function createDots() {
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.createElement('span');
-                    dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.addEventListener('click', () => { currentIndex = i; updateCarousel(); });
-                    dotsContainer.appendChild(dot);
-                }
-            }
-
-            if (track && slides.length) {
-                createDots();
-                prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); });
-                nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); });
-                // Auto-advance every 6 seconds
-                setInterval(() => { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); }, 6000);
-            }
+            setInterval(() => { index = (index+1)%testimonials.length; updateTestimonial(); }, 5000);
 
             // FAQ accordion
             document.querySelectorAll('.faq-question').forEach(q => {
-                q.addEventListener('click', function() {
-                    const parent = this.parentElement;
-                    parent.classList.toggle('active');
-                });
+                q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
             });
+
+            // Particles
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize);
+            resize();
+            for(let i=0; i<80; i++){
+                particles.push({
+                    x: Math.random()*canvas.width,
+                    y: Math.random()*canvas.height,
+                    vx: (Math.random()-0.5)*0.6,
+                    vy: (Math.random()-0.5)*0.6,
+                    size: Math.random()*2+1,
+                    opacity: Math.random()*0.5+0.2
+                });
+            }
+            function animate(){
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if(p.x<0||p.x>canvas.width) p.vx*=-1;
+                    if(p.y<0||p.y>canvas.height) p.vy*=-1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                    ctx.fillStyle = `rgba(0,255,137,${p.opacity})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
         })();
     </script>
 </body>
