@@ -6,24 +6,29 @@
     <title>HopeUp Tech Tutoring | Physics • Maths • Amharic | Online Canada</title>
     <style>
         :root {
-            --primary: #1E73BE;
-            --primary-light: #4a9fe0;
-            --accent: #F47920;
-            --accent-light: #ff9a4a;
-            --bg-gradient-start: #f8faff;
-            --bg-gradient-end: #eef3fc;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(255, 255, 255, 0.5);
-            --text-dark: #1a1a2e;
-            --text-body: #3a3a4a;
-            --text-muted: #6e6e80;
-            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.08);
-            --shadow-glow: 0 0 25px rgba(30, 115, 190, 0.15);
-            --radius-sm: 14px;
-            --radius-md: 24px;
-            --radius-lg: 34px;
-            --transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            --bg-primary: #06060c;
+            --bg-secondary: #0b0b16;
+            --bg-card: rgba(18, 18, 30, 0.7);
+            --bg-card-hover: rgba(25, 25, 40, 0.85);
+            --accent: #00ff89;
+            --accent-glow: rgba(0, 255, 137, 0.35);
+            --accent2: #7b61ff;
+            --accent2-glow: rgba(123, 97, 255, 0.35);
+            --gold: #ffb347;
+            --text-primary: #f0f0ff;
+            --text-secondary: #b0b0cc;
+            --text-muted: #7a7a95;
+            --border: #1f1f35;
+            --border-glow: #2a2a4a;
+            --gradient-1: linear-gradient(135deg, #00ff89, #00cc6a);
+            --gradient-2: linear-gradient(135deg, #7b61ff, #b56eff);
+            --gradient-3: linear-gradient(135deg, #ffb347, #ff8c00);
+            --shadow-glow: 0 0 30px rgba(0, 255, 137, 0.2);
+            --shadow-glow-purple: 0 0 30px rgba(123, 97, 255, 0.2);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
@@ -34,14 +39,15 @@
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            color: var(--text-body);
-            line-height: 1.6;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
             overflow-x: hidden;
-            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
-        /* subtle background pattern */
+        /* Animated background dots */
         body::before {
             content: '';
             position: fixed;
@@ -49,28 +55,40 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(circle at 25% 25%, rgba(30, 115, 190, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(244, 121, 32, 0.03) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 20%, rgba(0,255,137,0.04) 0%, transparent 60%),
+                radial-gradient(circle at 70% 70%, rgba(123,97,255,0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(6, 6, 12, 0.8);
             backdrop-filter: blur(20px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            transition: var(--transition);
         }
         .nav-inner {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 16px 28px;
+            padding: 16px 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -81,78 +99,82 @@
             gap: 12px;
             font-weight: 800;
             font-size: 1.6rem;
-            color: var(--primary);
-            text-decoration: none;
-            cursor: pointer;
             letter-spacing: -0.5px;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
         }
-        .logo-icon {
+        .logo-glow {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 12px;
+            background: var(--gradient-1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: 900;
-            box-shadow: 0 4px 12px rgba(30, 115, 190, 0.3);
+            font-size: 1.6rem;
+            color: #000;
+            box-shadow: 0 0 30px rgba(0,255,137,0.6);
         }
         .nav-links {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             list-style: none;
         }
         .nav-links a {
             text-decoration: none;
-            color: var(--text-body);
-            padding: 10px 20px;
+            color: var(--text-secondary);
+            padding: 10px 18px;
             border-radius: 30px;
-            font-weight: 500;
             font-size: 0.95rem;
+            font-weight: 500;
             transition: var(--transition);
             cursor: pointer;
             white-space: nowrap;
-            background: transparent;
         }
         .nav-links a:hover,
         .nav-links a.active {
-            background: rgba(30, 115, 190, 0.08);
-            color: var(--primary);
+            color: #fff;
+            background: rgba(255,255,255,0.06);
         }
         .nav-cta {
-            background: var(--accent) !important;
-            color: #fff !important;
+            background: var(--gradient-1) !important;
+            color: #000 !important;
             font-weight: 600;
-            box-shadow: 0 6px 18px rgba(244, 121, 32, 0.35);
+            box-shadow: 0 6px 20px rgba(0,255,137,0.4);
         }
         .nav-cta:hover {
-            background: var(--accent-light) !important;
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,255,137,0.7);
         }
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
-            color: var(--text-dark);
             cursor: pointer;
+            z-index: 1001;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            margin: 6px 0;
+            border-radius: 3px;
         }
 
-        /* Page Container */
         .page-container {
             position: relative;
             z-index: 1;
-            padding-top: 85px;
             min-height: 100vh;
+            padding-top: 85px;
         }
         .page {
             display: none;
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(12px);
             transition: opacity 0.4s, transform 0.4s;
-            padding: 60px 28px 50px;
+            padding: 50px 32px 40px;
         }
         .page.active {
             display: block;
@@ -160,43 +182,44 @@
             transform: translateY(0);
         }
         .page-inner {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Typography & Buttons */
         .section-badge {
-            display: inline-block;
-            background: rgba(30, 115, 190, 0.08);
-            color: var(--primary);
-            padding: 8px 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
             border-radius: 30px;
-            font-weight: 600;
+            background: rgba(0,255,137,0.08);
+            border: 1px solid rgba(0,255,137,0.2);
+            color: var(--accent);
             font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
             margin-bottom: 20px;
-            border: 1px solid rgba(30, 115, 190, 0.15);
         }
         .section-title {
-            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
             font-weight: 800;
-            color: var(--text-dark);
+            letter-spacing: -1.5px;
             margin-bottom: 20px;
-            letter-spacing: -0.8px;
-            line-height: 1.2;
+            line-height: 1.1;
         }
         .section-desc {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-size: 1.15rem;
-            max-width: 700px;
-            margin-bottom: 50px;
+            max-width: 650px;
+            margin-bottom: 48px;
         }
+
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 32px;
+            padding: 14px 30px;
             border-radius: 36px;
             font-weight: 600;
             font-size: 1rem;
@@ -208,21 +231,22 @@
             gap: 8px;
         }
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: #fff;
-            box-shadow: 0 10px 25px rgba(244, 121, 32, 0.4);
+            background: var(--gradient-1);
+            color: #000;
+            box-shadow: 0 8px 28px rgba(0,255,137,0.4);
         }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 18px 35px rgba(244, 121, 32, 0.55);
+            box-shadow: 0 14px 38px rgba(0,255,137,0.6);
         }
         .btn-outline {
             background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            color: #fff;
+            border: 2px solid var(--border-glow);
         }
         .btn-outline:hover {
-            background: rgba(30, 115, 190, 0.05);
+            border-color: var(--accent);
+            background: rgba(0,255,137,0.05);
             transform: translateY(-3px);
         }
 
@@ -230,38 +254,37 @@
         .hero {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
             flex-wrap: wrap;
-            padding: 30px 0 40px;
+            padding: 20px 0 40px;
         }
         .hero-text {
-            flex: 1 1 450px;
+            flex: 1 1 500px;
         }
         .hero-text h1 {
-            font-size: clamp(2.8rem, 6vw, 4.2rem);
+            font-size: clamp(3rem, 6vw, 5rem);
             font-weight: 900;
-            color: var(--text-dark);
-            line-height: 1.1;
+            letter-spacing: -2px;
+            line-height: 1.0;
             margin-bottom: 24px;
-            letter-spacing: -1.5px;
         }
         .hero-text .highlight {
-            color: var(--accent);
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .hero-image {
             flex: 0 0 280px;
+            position: relative;
         }
         .hero-image img {
             width: 100%;
             border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 40px rgba(30, 115, 190, 0.25);
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0,255,137,0.4);
             object-fit: cover;
             aspect-ratio: 1/1;
-            transition: var(--transition);
-        }
-        .hero-image img:hover {
-            transform: scale(1.03);
         }
         .hero-stats {
             display: flex;
@@ -269,215 +292,206 @@
             flex-wrap: wrap;
             margin-top: 40px;
         }
+        .stat-item {
+            text-align: center;
+        }
         .stat-number {
             font-size: 2.6rem;
-            font-weight: 800;
-            color: var(--primary);
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .stat-label {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
 
-        /* Cards Grid */
+        /* Glowing Cards */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
         }
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            padding: 40px 30px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--card-border);
+        .glow-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
             transition: var(--transition);
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .card::after {
+        .glow-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(0,255,137,0.08), transparent 70%);
+            opacity: 0;
+            transition: 0.4s;
         }
-        .card:hover {
+        .glow-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-md), var(--shadow-glow);
-            border-color: rgba(30, 115, 190, 0.3);
+            border-color: rgba(0,255,137,0.3);
+            box-shadow: var(--shadow-glow);
         }
-        .card:hover::after {
-            transform: scaleX(1);
+        .glow-card:hover::before {
+            opacity: 1;
         }
         .card-icon {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        .card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 14px;
-        }
-        .card p,
-        .card ul {
-            color: var(--text-body);
-            font-size: 0.95rem;
-        }
-        .card ul {
-            list-style: none;
-            margin-top: 14px;
-            text-align: left;
-        }
-        .card ul li {
-            padding: 5px 0;
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(0,255,137,0.1);
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-        .card ul li::before {
-            content: '✦';
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             color: var(--accent);
+        }
+        .glow-card h3 {
+            font-size: 1.4rem;
             font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .glow-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
-        /* How it works steps */
+        /* Steps */
         .steps {
             display: flex;
-            gap: 30px;
+            gap: 24px;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .step {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            padding: 36px 28px;
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
             text-align: center;
             flex: 1 1 180px;
-            max-width: 240px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--card-border);
+            max-width: 220px;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
-        .step:hover {
+        .step-card:hover {
             transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
         }
         .step-number {
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: #fff;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            color: #000;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
             font-size: 1.4rem;
-            margin: 0 auto 18px;
-            box-shadow: 0 6px 18px rgba(30, 115, 190, 0.3);
+            margin: 0 auto 16px;
         }
 
         /* Pricing */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 28px;
         }
         .pricing-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            background: var(--bg-card);
+            border: 2px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 44px 32px;
             text-align: center;
-            box-shadow: var(--shadow-sm);
-            border: 2px solid var(--card-border);
             position: relative;
             transition: var(--transition);
+            backdrop-filter: blur(15px);
         }
         .pricing-card.featured {
             border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(244, 121, 32, 0.2);
+            box-shadow: 0 0 35px rgba(0,255,137,0.3);
         }
         .pricing-badge {
             position: absolute;
             top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--accent);
-            color: #fff;
-            padding: 8px 24px;
-            border-radius: 24px;
+            background: var(--gradient-1);
+            color: #000;
+            padding: 6px 22px;
+            border-radius: 20px;
             font-weight: 700;
             font-size: 0.9rem;
-            box-shadow: 0 6px 16px rgba(244, 121, 32, 0.3);
         }
         .price {
             font-size: 4.2rem;
             font-weight: 900;
-            color: var(--primary);
-            margin: 16px 0 8px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .pricing-card.featured .price {
-            color: var(--accent);
+        .pricing-card:not(.featured) .price {
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            background-clip: text;
         }
         .pricing-features {
             list-style: none;
-            text-align: left;
             margin: 28px 0;
+            text-align: left;
         }
         .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            color: var(--text-body);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-secondary);
         }
         .pricing-features li::before {
             content: '✓ ';
-            color: var(--primary);
+            color: var(--accent);
             font-weight: 700;
         }
 
         /* Tutor cards */
         .tutor-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
             display: flex;
             flex-wrap: wrap;
-            gap: 35px;
+            gap: 30px;
             align-items: center;
-            margin-bottom: 40px;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--card-border);
+            margin-bottom: 30px;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
         .tutor-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
-        .tutor-img {
-            flex: 0 0 180px;
+            border-color: var(--accent);
+            box-shadow: var(--shadow-glow);
         }
         .tutor-img img {
-            width: 100%;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            border: 4px solid var(--accent);
-            box-shadow: 0 8px 25px rgba(244, 121, 32, 0.25);
+            border: 3px solid var(--accent);
+            object-fit: cover;
         }
         .badge-exp {
-            background: rgba(244, 121, 32, 0.1);
+            background: rgba(0,255,137,0.1);
             color: var(--accent);
-            padding: 6px 20px;
+            padding: 5px 18px;
             border-radius: 20px;
             font-weight: 600;
             display: inline-block;
@@ -491,13 +505,12 @@
             margin: 0 auto;
         }
         .testimonial-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
             padding: 44px;
             text-align: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
         }
         .carousel-dots {
             display: flex;
@@ -506,66 +519,69 @@
             margin-top: 24px;
         }
         .dot {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: #ccc;
+            background: var(--border);
             cursor: pointer;
             transition: var(--transition);
         }
         .dot.active {
             background: var(--accent);
-            transform: scale(1.3);
+            transform: scale(1.4);
         }
 
         /* FAQ */
         .faq-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius-sm);
-            margin-bottom: 14px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--card-border);
+            margin-bottom: 12px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
         .faq-question {
-            padding: 20px 28px;
+            padding: 18px 24px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
         .faq-answer {
-            padding: 0 28px 22px;
-            color: var(--text-body);
+            padding: 0 24px 18px;
+            color: var(--text-secondary);
             display: none;
         }
         .faq-item.active .faq-answer {
             display: block;
         }
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
 
-        /* Contact */
         .contact-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            background: var(--bg-card);
             border-radius: var(--radius-lg);
-            padding: 50px;
+            padding: 48px;
             text-align: center;
-            box-shadow: var(--shadow-md);
-            max-width: 520px;
+            border: 1px solid var(--border);
+            max-width: 500px;
             margin: 0 auto;
-            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
         }
 
         footer {
             text-align: center;
             padding: 30px;
             color: var(--text-muted);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            margin-top: 50px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 40px;
         }
 
         @media (max-width: 768px) {
@@ -575,11 +591,11 @@
                 right: -100%;
                 width: 270px;
                 height: 100vh;
-                background: rgba(255, 255, 255, 0.95);
+                background: rgba(6,6,12,0.95);
                 backdrop-filter: blur(25px);
                 flex-direction: column;
                 padding: 100px 24px 24px;
-                box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+                box-shadow: -5px 0 30px rgba(0,0,0,0.5);
                 transition: var(--transition);
             }
             .nav-links.active {
@@ -592,16 +608,17 @@
                 flex-direction: column-reverse;
                 text-align: center;
             }
-            .hero-stats {
-                justify-content: center;
-            }
         }
     </style>
 </head>
 <body>
+    <div class="grid-overlay"></div>
     <nav>
         <div class="nav-inner">
-            <div class="nav-logo" data-page="home"><div class="logo-icon">⚡</div>HopeUp Tech</div>
+            <div class="nav-logo" data-page="home">
+                <div class="logo-glow">⚡</div>
+                HopeUp Tech
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a data-page="home" class="active">Home</a></li>
                 <li><a data-page="subjects">Subjects</a></li>
@@ -612,7 +629,9 @@
                 <li><a data-page="faq">FAQ</a></li>
                 <li><a data-page="contact" class="nav-cta">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -622,22 +641,22 @@
             <div class="page-inner">
                 <div class="hero">
                     <div class="hero-text">
-                        <div class="section-badge">🇨🇦 Online Tutoring Across Canada</div>
+                        <div class="section-badge">🇨🇦 Online Tutoring • Canada</div>
                         <h1>Master <span class="highlight">Physics, Maths</span> & <span class="highlight">Amharic</span></h1>
-                        <p class="section-desc">Expert online tutoring for Grade 7‑12 & College students. 8+ years of experience, 100% virtual sessions — learn from anywhere.</p>
+                        <p class="section-desc">Expert online tutoring for Grade 7‑12 & College. 8+ years experience. Group & private sessions — 100% virtual, across Canada.</p>
                         <div class="hero-stats">
-                            <div><div class="stat-number counter" data-target="8">0</div><div class="stat-label">Years Experience</div></div>
-                            <div><div class="stat-number counter" data-target="500">0</div><div class="stat-label">Students Taught</div></div>
-                            <div><div class="stat-number counter" data-target="15">0</div><div class="stat-label">CAD/hr (Group)</div></div>
-                            <div><div class="stat-number counter" data-target="20">0</div><div class="stat-label">CAD/hr (Private)</div></div>
+                            <div class="stat-item"><div class="stat-number counter" data-target="8">0</div><div class="stat-label">Years Exp.</div></div>
+                            <div class="stat-item"><div class="stat-number counter" data-target="500">0</div><div class="stat-label">Students</div></div>
+                            <div class="stat-item"><div class="stat-number counter" data-target="15">0</div><div class="stat-label">CAD/hr (Group)</div></div>
+                            <div class="stat-item"><div class="stat-number counter" data-target="20">0</div><div class="stat-label">CAD/hr (Private)</div></div>
                         </div>
                         <div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
                             <button class="btn btn-primary" data-page="pricing">View Pricing</button>
-                            <button class="btn btn-outline" data-page="contact">Free Consultation</button>
+                            <button class="btn btn-outline" data-page="contact">Free Consult</button>
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="https://placehold.co/400x400/e8f0fe/1E73BE?text=Online+Tutoring" alt="HopeUp Tech">
+                        <img src="https://placehold.co/400x400/0b0b16/00ff89?text=Tutoring" alt="Online Tutoring">
                     </div>
                 </div>
             </div>
@@ -646,25 +665,12 @@
         <!-- SUBJECTS -->
         <div class="page" id="page-subjects">
             <div class="page-inner">
-                <span class="section-badge">What We Teach</span>
-                <h2 class="section-title">Core Subjects</h2>
-                <p class="section-desc">Our online sessions cover the full curriculum with interactive digital tools. All lessons are live, one‑on‑one or small group.</p>
+                <span class="section-badge">Subjects</span>
+                <h2 class="section-title">What We Teach</h2>
                 <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-icon">🔬</div>
-                        <h3>Physics</h3>
-                        <p>Mechanics, electricity, modern physics — simplified through virtual labs and real‑time problem solving.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">📐</div>
-                        <h3>Maths</h3>
-                        <p>Algebra, calculus, statistics — step‑by‑step methods with digital whiteboard and screen sharing.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">📖</div>
-                        <h3>Amharic</h3>
-                        <p>Grammar, literature, conversation — immersive online lessons tailored to your level.</p>
-                    </div>
+                    <div class="glow-card"><div class="card-icon">🔬</div><h3>Physics</h3><p>Mechanics, electromagnetism, modern physics – made clear with virtual labs and interactive problem‑solving.</p></div>
+                    <div class="glow-card"><div class="card-icon">📐</div><h3>Maths</h3><p>Algebra, calculus, statistics – step‑by‑step methods using digital whiteboards and real‑time collaboration.</p></div>
+                    <div class="glow-card"><div class="card-icon">📖</div><h3>Amharic</h3><p>Grammar, literature, conversation – engaging online lessons for all levels.</p></div>
                 </div>
             </div>
         </div>
@@ -674,12 +680,11 @@
             <div class="page-inner">
                 <span class="section-badge">Process</span>
                 <h2 class="section-title">How It Works</h2>
-                <p class="section-desc">Getting started with online tutoring is simple and flexible. Here's our easy four‑step journey.</p>
                 <div class="steps">
-                    <div class="step"><div class="step-number">1</div><h4>Free Consultation</h4><p>We discuss your goals and schedule via video call.</p></div>
-                    <div class="step"><div class="step-number">2</div><h4>Match with a Tutor</h4><p>We pair you with the best tutor for your needs.</p></div>
-                    <div class="step"><div class="step-number">3</div><h4>Online Sessions</h4><p>Interactive live lessons using Zoom / Google Meet.</p></div>
-                    <div class="step"><div class="step-number">4</div><h4>Track Progress</h4><p>Regular feedback and progress reports.</p></div>
+                    <div class="step-card"><div class="step-number">1</div><h4>Free Consult</h4><p>We discuss your goals via video call.</p></div>
+                    <div class="step-card"><div class="step-number">2</div><h4>Match</h4><p>We assign the best tutor for you.</p></div>
+                    <div class="step-card"><div class="step-number">3</div><h4>Online Sessions</h4><p>Interactive live lessons on Zoom/Meet.</p></div>
+                    <div class="step-card"><div class="step-number">4</div><h4>Track Progress</h4><p>Regular feedback & exam prep.</p></div>
                 </div>
             </div>
         </div>
@@ -688,30 +693,29 @@
         <div class="page" id="page-tutors">
             <div class="page-inner">
                 <span class="section-badge">Our Team</span>
-                <h2 class="section-title">Meet Our Online Tutors</h2>
-                <p class="section-desc">Experienced educators who connect with students through engaging virtual classrooms.</p>
+                <h2 class="section-title">Meet Your Tutors</h2>
                 <div class="tutor-card">
-                    <div class="tutor-img"><img src="https://placehold.co/300x300/fff0e6/F47920?text=Eyuel" alt="Eyuel"></div>
+                    <div class="tutor-img"><img src="https://placehold.co/300x300/0b0b16/00ff89?text=Eyuel" alt="Eyuel"></div>
                     <div>
                         <h3>Eyuel Mengistu</h3>
                         <span class="badge-exp">🏆 8+ Years • Physics & Maths</span>
-                        <p style="margin-top:12px;">Eyuel brings complex concepts to life through digital simulations and patient, step‑by‑step guidance.</p>
+                        <p style="margin-top:12px;">Eyuel uses digital simulations and patient guidance to turn complex physics into simple logic.</p>
                     </div>
                 </div>
                 <div class="tutor-card">
-                    <div class="tutor-img"><img src="https://placehold.co/300x300/e8f0fe/1E73BE?text=Sarah" alt="Sarah"></div>
+                    <div class="tutor-img"><img src="https://placehold.co/300x300/0b0b16/7b61ff?text=Sarah" alt="Sarah"></div>
                     <div>
                         <h3>Sarah Tewolde</h3>
                         <span class="badge-exp">📚 5+ Years • Amharic & Literature</span>
-                        <p style="margin-top:12px;">Sarah uses interactive reading and writing exercises to make Amharic accessible and fun online.</p>
+                        <p style="margin-top:12px;">Sarah's interactive reading exercises make Amharic enjoyable and accessible from anywhere.</p>
                     </div>
                 </div>
                 <div class="tutor-card">
-                    <div class="tutor-img"><img src="https://placehold.co/300x300/f4f6fa/F47920?text=Daniel" alt="Daniel"></div>
+                    <div class="tutor-img"><img src="https://placehold.co/300x300/0b0b16/ffb347?text=Daniel" alt="Daniel"></div>
                     <div>
                         <h3>Daniel Bekele</h3>
                         <span class="badge-exp">🧮 6+ Years • Mathematics & Statistics</span>
-                        <p style="margin-top:12px;">Daniel excels at breaking down equations using virtual whiteboards and real‑time collaboration.</p>
+                        <p style="margin-top:12px;">Daniel excels at virtual whiteboard sessions, making calculus and stats crystal clear.</p>
                     </div>
                 </div>
             </div>
@@ -722,29 +726,26 @@
             <div class="page-inner" style="text-align:center;">
                 <span class="section-badge">Pricing (CAD)</span>
                 <h2 class="section-title">Simple Online Rates</h2>
-                <p class="section-desc" style="margin:0 auto 40px;">All sessions are 60 minutes via video call. No hidden fees.</p>
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="pricing-badge">👥 Group</div>
                         <div class="price">15</div>
-                        <div>CAD / hour per student</div>
+                        <div>CAD/hr per student</div>
                         <ul class="pricing-features">
                             <li>2‑5 students online</li>
-                            <li>Same curriculum & pace</li>
+                            <li>Same curriculum</li>
                             <li>Interactive group chat</li>
-                            <li>Weekly progress updates</li>
                         </ul>
                         <button class="btn btn-outline" data-page="contact" style="width:100%;">Inquire</button>
                     </div>
                     <div class="pricing-card featured">
                         <div class="pricing-badge">⭐ Private</div>
                         <div class="price">20</div>
-                        <div>CAD / hour</div>
+                        <div>CAD/hr</div>
                         <ul class="pricing-features">
-                            <li>1‑on‑1 dedicated attention</li>
-                            <li>Flexible online scheduling</li>
-                            <li>Custom digital resources</li>
-                            <li>Priority chat support</li>
+                            <li>1‑on‑1 attention</li>
+                            <li>Flexible scheduling</li>
+                            <li>Custom study plan</li>
                         </ul>
                         <button class="btn btn-primary" data-page="contact" style="width:100%;">Book Now</button>
                     </div>
@@ -756,7 +757,7 @@
         <div class="page" id="page-testimonials">
             <div class="page-inner">
                 <span class="section-badge">Testimonials</span>
-                <h2 class="section-title">Success Stories</h2>
+                <h2 class="section-title">Student Stories</h2>
                 <div class="testimonial-carousel">
                     <div class="testimonial-card" id="testimonialText">"Online physics with Eyuel was a game‑changer — I finally understand circuits!" — Leah, Grade 11</div>
                     <div class="carousel-dots" id="carouselDots"></div>
@@ -770,20 +771,20 @@
                 <span class="section-badge">FAQ</span>
                 <h2 class="section-title">Common Questions</h2>
                 <div class="faq-item active">
-                    <div class="faq-question">How do online sessions work? <span>+</span></div>
-                    <div class="faq-answer">We use Zoom or Google Meet with screen sharing and a digital whiteboard. You'll receive a link before each session.</div>
+                    <div class="faq-question">How do online sessions work? <span class="faq-icon">+</span></div>
+                    <div class="faq-answer">We use Zoom or Google Meet with screen sharing and a digital whiteboard. You'll receive a link before each class.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Do you only offer online tutoring? <span>+</span></div>
-                    <div class="faq-answer">Yes, we're 100% online to serve students across Canada with flexible scheduling.</div>
+                    <div class="faq-question">Do you only offer online tutoring? <span class="faq-icon">+</span></div>
+                    <div class="faq-answer">Yes, we're 100% online — flexible scheduling, anywhere in Canada.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">What equipment do I need? <span>+</span></div>
-                    <div class="faq-answer">Just a computer or tablet with a stable internet connection. A headset is recommended.</div>
+                    <div class="faq-question">What equipment do I need? <span class="faq-icon">+</span></div>
+                    <div class="faq-answer">Just a computer or tablet with stable internet. A headset is recommended.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Can I switch between tutors? <span>+</span></div>
-                    <div class="faq-answer">Absolutely — we want you to have the best match.</div>
+                    <div class="faq-question">Can I switch tutors? <span class="faq-icon">+</span></div>
+                    <div class="faq-answer">Absolutely — we'll help you find the perfect fit.</div>
                 </div>
             </div>
         </div>
@@ -791,30 +792,27 @@
         <!-- CONTACT -->
         <div class="page" id="page-contact">
             <div class="page-inner" style="text-align:center;">
-                <span class="section-badge">Get In Touch</span>
-                <h2 class="section-title">Start Learning Today</h2>
+                <span class="section-badge">Contact</span>
+                <h2 class="section-title">Get In Touch</h2>
                 <div class="contact-card">
-                    <p style="font-size:1.3rem; margin-bottom:18px;">📧 <strong>hopeuptech@gmail.com</strong></p>
-                    <p style="margin-bottom:18px;">📱 Telegram: <strong>@HopeUpTech</strong></p>
-                    <p style="color:var(--text-muted); margin-bottom:28px;">We'll reply within a few hours!</p>
+                    <p style="font-size:1.3rem;">📧 <strong>hopeuptech@gmail.com</strong></p>
+                    <p style="margin:18px 0;">📱 Telegram: <strong>@HopeUpTech</strong></p>
                     <button class="btn btn-primary" onclick="location.href='mailto:hopeuptech@gmail.com'">Send Email</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 HopeUp Tech Tutoring Service · Online across Canada</p>
-    </footer>
+    <footer>© 2026 HopeUp Tech Tutoring • Online across Canada</footer>
 
     <script>
         // Page navigation
         const pages = document.querySelectorAll('.page');
         const navLinks = document.querySelectorAll('[data-page]');
-        function navigateTo(pageId) {
+        function navigateTo(id) {
             pages.forEach(p => p.classList.remove('active'));
-            document.getElementById('page-' + pageId).classList.add('active');
-            navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('data-page') === pageId));
+            document.getElementById('page-' + id).classList.add('active');
+            navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('data-page') === id));
             document.getElementById('navLinks').classList.remove('active');
             window.scrollTo({top:0, behavior:'smooth'});
         }
@@ -822,8 +820,6 @@
             const btn = e.target.closest('[data-page]');
             if(btn) { e.preventDefault(); navigateTo(btn.getAttribute('data-page')); }
         });
-
-        // Mobile menu
         document.getElementById('mobileMenuBtn').addEventListener('click', ()=>{
             document.getElementById('navLinks').classList.toggle('active');
         });
@@ -836,23 +832,23 @@
                     const el = entry.target;
                     const target = +el.getAttribute('data-target');
                     let current = 0;
-                    const step = target/60;
+                    const step = target/70;
                     const t = setInterval(() => {
                         current += step;
                         if(current >= target){ el.textContent = target; clearInterval(t); }
                         else el.textContent = Math.floor(current);
-                    }, 16);
+                    }, 20);
                     obs.unobserve(el);
                 }
             });
         }, {threshold:0.5});
         counters.forEach(c => obs.observe(c));
 
-        // Testimonials carousel
+        // Testimonials
         const testimonials = [
             '"Online physics with Eyuel was a game‑changer — I finally understand circuits!" — Leah, Grade 11',
-            '"Our group maths sessions were affordable and super effective — love the digital whiteboard." — Toronto Study Group',
-            '"Sarah makes Amharic so engaging. I look forward to every class." — Meron, College',
+            '"Our group maths sessions were affordable and super effective." — Toronto Study Group',
+            '"My Amharic writing improved dramatically in just 2 months." — Meron, College',
             '"Daniel helped me ace my statistics final — all through virtual sessions!" — James, University',
         ];
         let idx = 0;
