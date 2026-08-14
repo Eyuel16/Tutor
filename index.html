@@ -1,41 +1,10 @@
-Based on your detailed instructions, I have created a complete, multi-page static website. It adopts the modern, dark-themed visual style from `trade.hopeup.ca` and is structured to be a professional and attractive online presence for HopeUp Tutoring.
-
-### ⚡️ Key Features of the Website
-
-- **Multi-Page Structure:** The site now includes three pages: **Home**, **Tutors**, and **Contact**, allowing for a clear and organized presentation of your services and team.
-- **New "Tutors" Page:** A dedicated page for **Eyuel Woldesenbet**, showcasing his extensive engineering background (8+ years of experience) as presented on his Profile page. This builds trust by highlighting your tutor's qualifications.
-- **Updated Services & Pricing:**
-    - **Subjects:** Expanded to include a comprehensive list of academic subjects (Math, Physics, Chemistry, Biology, Computer Science, etc.) for Grades 7-12 and university-level Engineering and Math courses, aligning with the Canadian curriculum.
-    - **Pricing:** Clearly displays the rates: **CAD $29/hr** for Grades 7-12 and **CAD $48/hr** for University courses.
-    - **Offer:** A **10% discount** for early registration is prominently featured as a call-to-action.
-- **Refined Content & Style:**
-    - Removed the specified sections (Early childhood, ESL, Tutor logos, Events, Testimonials).
-    - Added the new contact details: **Email**, **WhatsApp**, **Telegram**, and a physical **Address** in Toronto.
-    - Text is **justified** for a clean, professional look.
-    - The logo is now set to use your provided file (`download16.png`).
-
-### 📁 File Structure & How to Use
-
-For the multi-page functionality to work, you need to save the provided code as separate `.html` files and keep your logo image in the same folder.
-
-1.  **Save the Homepage:** Create a file named `index.html` and paste the **Homepage** code into it.
-2.  **Save the Tutors Page:** Create a file named `tutors.html` and paste the **Tutors Page** code into it.
-3.  **Save the Contact Page:** Create a file named `contact.html` and paste the **Contact Page** code into it.
-4.  **Add Your Logo:** Place your logo image file (`download16.png`) in the same folder as these HTML files.
-
-The navigation menu links are already set up to point to these files (e.g., `<a href="tutors.html">`), so the pages will connect seamlessly.
-
----
-
-### Homepage (`index.html`)
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HopeUp Tutoring | Academic Support in Canada</title>
+
     <!-- Font Awesome 6 (free) for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts: Inter, Space Grotesk, JetBrains Mono -->
@@ -164,6 +133,54 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
         .nav-link.active {
             color: white;
         }
+
+        /* Tutor profile card */
+        .tutor-card {
+            background: #0f1522;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.2s;
+        }
+        .tutor-card:hover {
+            border-color: rgba(79,172,254,0.4);
+        }
+        .tutor-card .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #4facfe20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #4facfe;
+            border: 2px solid #4facfe40;
+        }
+        .tutor-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .tutor-card .subtitle {
+            color: #4facfe;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .tutor-card .bio {
+            color: #c2ccdc;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        .tutor-card .badge {
+            background: #4facfe15;
+            color: #4facfe;
+            padding: 0.25rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            border: 1px solid #4facfe30;
+        }
     </style>
 </head>
 <body>
@@ -174,7 +191,7 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
     <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0b0f19]/90 backdrop-blur-xl" style="height:72px;">
         <div class="mx-auto flex h-[72px] w-full max-w-[90rem] items-center justify-between gap-6 px-5 lg:px-10">
             <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-3 group">
+            <a href="#home" class="flex items-center gap-3 group">
                 <img src="download16.png" alt="HopeUp Tutoring Logo" class="h-10 w-10 object-contain rounded-xl" />
                 <span class="leading-tight">
                     <span class="block font-display text-lg font-bold tracking-tight text-white">HopeUp Tutoring</span>
@@ -182,16 +199,18 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
                 </span>
             </a>
 
-            <!-- Navigation -->
+            <!-- Navigation (single page scroll) -->
             <nav class="hidden items-center gap-1 md:flex">
-                <a href="index.html" class="nav-link active px-3 py-2">Home</a>
-                <a href="tutors.html" class="nav-link px-3 py-2">Tutors</a>
-                <a href="contact.html" class="nav-link px-3 py-2">Contact</a>
+                <a href="#home" class="nav-link active px-3 py-2">Home</a>
+                <a href="#pricing" class="nav-link px-3 py-2">Pricing</a>
+                <a href="#services" class="nav-link px-3 py-2">Services</a>
+                <a href="#tutors" class="nav-link px-3 py-2">Tutors</a>
+                <a href="#contact" class="nav-link px-3 py-2">Contact</a>
             </nav>
 
             <!-- Right side: CTA -->
             <div class="flex items-center gap-2">
-                <a href="contact.html" class="hidden h-9 items-center gap-2 rounded-lg border border-[#4facfe]/40 bg-[#4facfe]/10 px-3 text-sm font-medium text-[#4facfe] transition-colors hover:bg-[#4facfe]/20 sm:inline-flex">
+                <a href="#contact" class="hidden h-9 items-center gap-2 rounded-lg border border-[#4facfe]/40 bg-[#4facfe]/10 px-3 text-sm font-medium text-[#4facfe] transition-colors hover:bg-[#4facfe]/20 sm:inline-flex">
                     <i class="fa-solid fa-envelope"></i> Contact
                 </a>
                 <span class="hidden items-center gap-2 rounded-full border border-[#4facfe]/25 bg-[#101728] px-3 py-1.5 text-xs font-medium text-[#cbd6e8] xl:inline-flex">
@@ -210,9 +229,9 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
     <main class="flex-1 pt-[72px]">
 
         <!-- ========================================================== -->
-        <!--  HERO SECTION                                              -->
+        <!--  HERO SECTION (#home)                                      -->
         <!-- ========================================================== -->
-        <section class="relative overflow-hidden brand-grid">
+        <section id="home" class="relative overflow-hidden brand-grid">
             <div class="pointer-events-none absolute -top-40 left-1/4 h-[420px] w-[420px] rounded-full bg-[#4facfe]/20 blur-[140px]"></div>
             <div class="pointer-events-none absolute bottom-0 right-0 h-[360px] w-[360px] rounded-full bg-[#00c853]/10 blur-[140px]"></div>
 
@@ -227,13 +246,13 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
                     </h1>
                     <p class="mt-4 text-xl font-medium text-[#4facfe]">Grades 7–12 & University • All Academic Subjects</p>
                     <p class="mt-7 max-w-xl text-lg leading-relaxed text-[#9aa8bf] text-justify">
-                        HopeUp Tutoring provides one-on-one online support for students across Canada. We cover the full academic curriculum — from Mathematics and Sciences to English and Computer Science — with a focus on building understanding, confidence, and strong study skills. Our experienced tutors adapt to each student's learning style and pace.
+                        HopeUp Tutoring provides one-on-one online support for students across Canada. We cover the full academic curriculum — from Mathematics and Sciences to English, Computer Science, and Engineering — with a focus on building understanding, confidence, and strong study skills. Our experienced tutors adapt to each student's learning style and pace.
                     </p>
                     <div class="mt-9 flex flex-wrap gap-3">
-                        <a href="tutors.html" class="inline-flex h-12 items-center gap-2 rounded-xl bg-[#4facfe] px-6 font-semibold text-[#06101f] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
+                        <a href="#tutors" class="inline-flex h-12 items-center gap-2 rounded-xl bg-[#4facfe] px-6 font-semibold text-[#06101f] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
                             Meet our tutors <i class="fa-solid fa-arrow-right text-sm"></i>
                         </a>
-                        <a href="contact.html" class="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 font-semibold text-white transition-colors hover:border-[#4facfe]/60 hover:text-[#4facfe]">
+                        <a href="#contact" class="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 font-semibold text-white transition-colors hover:border-[#4facfe]/60 hover:text-[#4facfe]">
                             <i class="fa-regular fa-comments"></i> Get in touch
                         </a>
                     </div>
@@ -243,7 +262,7 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
                     </div>
                 </div>
 
-                <!-- Right content: pricing cards -->
+                <!-- Right content: pricing preview -->
                 <div class="grid gap-4">
                     <div class="pricing-card">
                         <div class="label">Grades 7–12</div>
@@ -265,47 +284,79 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
         </section>
 
         <!-- ========================================================== -->
-        <!--  SERVICES GRID (common tutoring services in Canada)        -->
+        <!--  PRICING SECTION (#pricing)                                -->
         <!-- ========================================================== -->
-        <section class="mx-auto w-full max-w-[80rem] px-5 py-20 lg:px-10 lg:py-24">
+        <section id="pricing" class="border-y border-white/10 bg-[#0d121e] py-16">
+            <div class="mx-auto max-w-[80rem] px-5">
+                <div class="text-center max-w-3xl mx-auto">
+                    <p class="font-mono2 text-[11px] uppercase tracking-[0.25em] text-[#4facfe]">Pricing</p>
+                    <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Simple, Transparent Rates</h2>
+                    <p class="mt-4 text-[#93a1b8] text-justify">All sessions are one-on-one, online, and tailored to your needs. Pay per session — no contracts or hidden fees. Early registrants receive a 10% discount on their first 5 sessions.</p>
+                </div>
+
+                <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Grades 7-12 -->
+                    <div class="pricing-card border-[#4facfe]/30 relative">
+                        <div class="absolute -top-3 right-4 bg-[#4facfe] text-[#06101f] text-xs font-bold px-3 py-1 rounded-full">Most popular</div>
+                        <div class="label">Grades 7 – 12</div>
+                        <div class="price mt-2">$29 <small>CAD / hr</small></div>
+                        <ul class="mt-4 text-sm text-[#c2ccdc] space-y-2 text-left list-disc pl-5">
+                            <li>All academic subjects</li>
+                            <li>Homework help & test prep</li>
+                            <li>Flexible scheduling</li>
+                            <li>Free consultation</li>
+                        </ul>
+                        <div class="mt-4 text-xs text-[#8794aa]">10% discount for early registration</div>
+                    </div>
+
+                    <!-- University -->
+                    <div class="pricing-card border-[#00c853]/30">
+                        <div class="label">University</div>
+                        <div class="price mt-2">$48 <small>CAD / hr</small></div>
+                        <ul class="mt-4 text-sm text-[#c2ccdc] space-y-2 text-left list-disc pl-5">
+                            <li>Engineering & Math courses</li>
+                            <li>Physics & Computer Science</li>
+                            <li>Assignment & project support</li>
+                            <li>Exam preparation</li>
+                        </ul>
+                        <div class="mt-4 text-xs text-[#8794aa]">10% discount for early registration</div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="pricing-card">
+                        <div class="label">Languages</div>
+                        <div class="text-white font-display text-2xl font-semibold mt-2">English · Amharic</div>
+                        <p class="mt-2 text-sm text-[#8794aa]">Instruction available in both languages, at the same rates as above.</p>
+                        <div class="mt-4 text-xs text-[#8794aa]">10% discount for early registration</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!--  SERVICES SECTION (#services)                              -->
+        <!-- ========================================================== -->
+        <section id="services" class="mx-auto w-full max-w-[80rem] px-5 py-20 lg:px-10 lg:py-24">
             <div class="text-center max-w-3xl mx-auto">
                 <p class="font-mono2 text-[11px] uppercase tracking-[0.25em] text-[#4facfe]">Our Services</p>
                 <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Comprehensive Academic Support</h2>
-                <p class="mt-4 text-[#93a1b8] text-justify">We provide structured, personalized tutoring across all major academic subjects for students in grades 7–12 and university. Our services are designed to build mastery, improve grades, and develop effective learning strategies.</p>
+                <p class="mt-4 text-[#93a1b8] text-justify">We provide structured, personalized tutoring across a wide range of subjects for students in grades 7–12 and university. Our services are designed to build mastery, improve grades, and develop effective learning strategies.</p>
             </div>
 
             <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <!-- Service 1 -->
+                <!-- Service 1: Mathematics & Sciences -->
                 <div class="service-card">
                     <div class="icon"><i class="fa-solid fa-calculator"></i></div>
                     <h3>Mathematics & Sciences</h3>
                     <p>Comprehensive tutoring in Mathematics (from pre-algebra to calculus), Physics, Chemistry, Biology, and General Science. We break down complex concepts into understandable steps and provide ample practice to build fluency and problem-solving skills.</p>
                 </div>
-                <!-- Service 2 -->
+                <!-- Service 2: Computer Science & Engineering -->
                 <div class="service-card">
                     <div class="icon"><i class="fa-solid fa-laptop-code"></i></div>
                     <h3>Computer Science & Engineering</h3>
                     <p>Support for high school and university courses in Computer Science, programming (Python, Java, C++), engineering fundamentals, and technical writing. We help you grasp theoretical concepts and apply them to practical problems and projects.</p>
                 </div>
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="icon"><i class="fa-solid fa-book-open"></i></div>
-                    <h3>English & Humanities</h3>
-                    <p>Develop strong reading, writing, and analytical skills for English, Literature, History, Economics, and Law. We focus on essay writing, critical analysis, exam preparation, and effective communication techniques tailored to the Canadian curriculum.</p>
-                </div>
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="icon"><i class="fa-solid fa-language"></i></div>
-                    <h3>French & ESL Support</h3>
-                    <p>Build confidence in French (Core, Immersion, AP) or English as a Second Language. Our tutors provide personalized instruction in grammar, vocabulary, speaking, and writing to help you achieve your academic and personal language goals.</p>
-                </div>
-                <!-- Service 5 -->
-                <div class="service-card">
-                    <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h3>AP / IB Preparation</h3>
-                    <p>Specialized tutoring for Advanced Placement and International Baccalaureate courses. We help you master the rigorous curriculum, develop effective study strategies, and prepare for exams with confidence.</p>
-                </div>
-                <!-- Service 6 -->
+                <!-- Service 3: University Course Support -->
                 <div class="service-card">
                     <div class="icon"><i class="fa-solid fa-users-gear"></i></div>
                     <h3>University Course Support</h3>
@@ -334,10 +385,95 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
                     <span class="rounded-full border border-white/10 bg-[#0f1522] px-4 py-2 text-sm text-[#c2ccdc] hover:border-[#4facfe]/50 transition-all">History</span>
                     <span class="rounded-full border border-white/10 bg-[#0f1522] px-4 py-2 text-sm text-[#c2ccdc] hover:border-[#4facfe]/50 transition-all">Economics</span>
                     <span class="rounded-full border border-white/10 bg-[#0f1522] px-4 py-2 text-sm text-[#c2ccdc] hover:border-[#4facfe]/50 transition-all">Law</span>
-                    <span class="rounded-full border border-white/10 bg-[#0f1522] px-4 py-2 text-sm text-[#c2ccdc] hover:border-[#4facfe]/50 transition-all">AP / IB Prep</span>
                     <span class="rounded-full border border-white/10 bg-[#0f1522] px-4 py-2 text-sm text-[#c2ccdc] hover:border-[#4facfe]/50 transition-all">Engineering</span>
                     <span class="rounded-full border border-white/10 bg-[#0f1522] px-4 py-2 text-sm text-[#c2ccdc] hover:border-[#4facfe]/50 transition-all">University Math</span>
                     <span class="rounded-full border border-white/10 bg-[#0f1522] px-4 py-2 text-sm text-[#c2ccdc] hover:border-[#4facfe]/50 transition-all">ESL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!--  TUTORS SECTION (#tutors)                                  -->
+        <!-- ========================================================== -->
+        <section id="tutors" class="mx-auto w-full max-w-[80rem] px-5 py-20 lg:px-10 lg:py-24">
+            <div class="text-center max-w-3xl mx-auto">
+                <p class="font-mono2 text-[11px] uppercase tracking-[0.25em] text-[#4facfe]">Our Tutors</p>
+                <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Meet Your Instructor</h2>
+                <p class="mt-4 text-[#93a1b8] text-justify">Our lead tutor brings over 8 years of experience in education and engineering, combining deep subject knowledge with a structured, supportive teaching style.</p>
+            </div>
+
+            <div class="mt-12">
+                <div class="tutor-card max-w-4xl mx-auto">
+                    <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                        <div class="avatar flex-shrink-0">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <h3>Eyuel Woldesenbet</h3>
+                                <span class="badge">8+ years experience</span>
+                            </div>
+                            <p class="subtitle">Civil Engineer · Remote Consultant · Tutor</p>
+                            <div class="bio mt-3">
+                                Eyuel is a Senior Civil Engineer with over 8 years of experience in both on-site construction supervision and remote consulting for international firms. He holds a BSc in Civil Engineering from Addis Ababa University and a Certificate in Software Engineering from ALX Africa.
+                                <br /><br />
+                                His tutoring approach blends rigorous academic knowledge with real-world problem-solving. He specializes in Mathematics, Physics, Computer Science, and Engineering subjects for both high school and university students. Eyuel is fluent in English and Amharic, and he tailors each session to the student's individual learning style, ensuring concepts are not just memorised but truly understood.
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge">AutoCAD</span>
+                                <span class="badge">SAP/ETABS</span>
+                                <span class="badge">MS Project</span>
+                                <span class="badge">Python</span>
+                                <span class="badge">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!--  CONTACT SECTION (#contact)                                -->
+        <!-- ========================================================== -->
+        <section id="contact" class="border-y border-white/10 bg-[#0d121e] py-16">
+            <div class="mx-auto max-w-[80rem] px-5">
+                <div class="text-center max-w-3xl mx-auto">
+                    <p class="font-mono2 text-[11px] uppercase tracking-[0.25em] text-[#4facfe]">Contact</p>
+                    <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Get in Touch</h2>
+                    <p class="mt-4 text-[#93a1b8] text-justify">Have questions or ready to book a session? Reach out to us — we're here to help you succeed.</p>
+                </div>
+
+                <div class="mt-12 grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+                    <!-- Left: Contact details -->
+                    <div class="space-y-4">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:hopeuptech@gmail.com">hopeuptech@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <a href="https://wa.me/16478038537">+1 (647) 803-8537</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-brands fa-telegram"></i>
+                            <a href="https://t.me/+16478038537">+1 (647) 803-8537</a>
+                        </div>
+                        <div class="address-block">
+                            <i class="fa-solid fa-location-dot text-[#4facfe] text-xl mr-2"></i>
+                            <p class="inline-block">45 Grenoble Drive, Toronto, Ontario M3C 1C4, Canada</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Quick form (simple, non-functional placeholder) -->
+                    <div class="bg-[#0f1522] border border-white/10 rounded-2xl p-6">
+                        <h3 class="font-display text-lg font-semibold text-white">Send a Message</h3>
+                        <form class="mt-4 space-y-4" onsubmit="event.preventDefault(); alert('Thanks for your message! We will get back to you shortly.');">
+                            <input type="text" placeholder="Your name" class="w-full rounded-xl border border-white/10 bg-[#0b0f19] px-4 py-3 text-sm text-white placeholder:text-[#5a677d] focus:border-[#4facfe] outline-none" />
+                            <input type="email" placeholder="Your email" class="w-full rounded-xl border border-white/10 bg-[#0b0f19] px-4 py-3 text-sm text-white placeholder:text-[#5a677d] focus:border-[#4facfe] outline-none" />
+                            <textarea rows="3" placeholder="Tell us what you need help with..." class="w-full rounded-xl border border-white/10 bg-[#0b0f19] px-4 py-3 text-sm text-white placeholder:text-[#5a677d] focus:border-[#4facfe] outline-none resize-none"></textarea>
+                            <button type="submit" class="w-full rounded-xl bg-[#4facfe] py-3 font-semibold text-[#06101f] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -349,10 +485,10 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
             <h2 class="font-display text-3xl font-bold text-white sm:text-4xl">Start Your Learning Journey Today</h2>
             <p class="max-w-xl text-[#93a1b8] text-justify">Book a free consultation to discuss your needs, meet your tutor, and create a personalized learning plan.</p>
             <div class="flex flex-wrap gap-4">
-                <a href="contact.html" class="inline-flex h-12 items-center gap-2 rounded-xl bg-[#4facfe] px-7 font-semibold text-[#06101f] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
+                <a href="#contact" class="inline-flex h-12 items-center gap-2 rounded-xl bg-[#4facfe] px-7 font-semibold text-[#06101f] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
                     <i class="fa-regular fa-calendar-plus"></i> Book a free session
                 </a>
-                <a href="tutors.html" class="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-7 font-semibold text-white transition-colors hover:border-[#4facfe]/60 hover:text-[#4facfe]">
+                <a href="#tutors" class="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-7 font-semibold text-white transition-colors hover:border-[#4facfe]/60 hover:text-[#4facfe]">
                     <i class="fa-solid fa-user-graduate"></i> Meet Eyuel
                 </a>
             </div>
@@ -366,7 +502,7 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
     <footer class="border-t border-white/10 bg-[#080b13]">
         <div class="mx-auto grid w-full max-w-[80rem] gap-10 px-5 py-14 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-10">
             <div class="space-y-4">
-                <a href="index.html" class="flex items-center gap-3 group">
+                <a href="#home" class="flex items-center gap-3 group">
                     <img src="download16.png" alt="HopeUp Tutoring Logo" class="h-10 w-10 object-contain rounded-xl" />
                     <span class="leading-tight">
                         <span class="block font-display text-lg font-bold tracking-tight text-white">HopeUp Tutoring</span>
@@ -380,9 +516,11 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
             <div>
                 <h4 class="font-display text-sm uppercase tracking-[0.2em] text-white">Quick links</h4>
                 <ul class="mt-4 space-y-2 text-sm text-[#8794aa]">
-                    <li><a href="index.html" class="hover:text-[#4facfe]">Home</a></li>
-                    <li><a href="tutors.html" class="hover:text-[#4facfe]">Tutors</a></li>
-                    <li><a href="contact.html" class="hover:text-[#4facfe]">Contact</a></li>
+                    <li><a href="#home" class="hover:text-[#4facfe]">Home</a></li>
+                    <li><a href="#pricing" class="hover:text-[#4facfe]">Pricing</a></li>
+                    <li><a href="#services" class="hover:text-[#4facfe]">Services</a></li>
+                    <li><a href="#tutors" class="hover:text-[#4facfe]">Tutors</a></li>
+                    <li><a href="#contact" class="hover:text-[#4facfe]">Contact</a></li>
                 </ul>
             </div>
             <div>
@@ -397,4 +535,3 @@ The navigation menu links are already set up to point to these files (e.g., `<a 
 
 </body>
 </html>
-```
